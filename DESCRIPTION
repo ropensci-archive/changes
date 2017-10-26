@@ -13,8 +13,9 @@ Depends:
 License: GPL-2
 LazyData: true
 Imports:
-	git2r,
-    githug
+	git2r (>= 0.19.0),
+	later (>= 0.5),
+  githug
 Remotes: jennybc/githug
 Suggests: 
 	testthat,
