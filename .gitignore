@@ -6,3 +6,4 @@
 *.rda
 *.rds
 *~$*
+.Rproj.user
