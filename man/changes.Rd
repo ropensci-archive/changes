@@ -4,7 +4,7 @@
 \alias{changes}
 \title{View Changes in Files under Version Control.}
 \usage{
-changes()
+changes(files = NULL)
 }
 \value{
 TODO
