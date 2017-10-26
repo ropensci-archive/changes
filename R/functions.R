@@ -296,3 +296,14 @@ checkout_branch <- function (branch) {
   git2r::checkout(cache$repo, branch)
   
 }
+
+set_reminder <- function(seconds=0, minutes=0, hours=0, days=0) {
+  # record reminder delay in seconds somewhere 
+}
+
+schedule_reminder <- function() {
+  # get the reminder delay from wherever
+  later::later(function() { print( changes())}, delay=delay)
+}
+
+}
