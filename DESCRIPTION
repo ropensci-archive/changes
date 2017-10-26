@@ -7,7 +7,7 @@ Authors@R: c(
     person("Tim", "Churches", , "tim.churches@gmail.com", c("aut")),
     person("Daniel", "Falster", , "", c("aut"))
     )
-Description: This package provides a set of easy-to-use tools for beginners wanting to implement version control via git for their projects
+Description: This package provides a set of easy-to-use tools for beginners wanting to implement version control via git for their projects.
 Depends: 
 	R (>= 3.2.2)
 License: GPL-2
