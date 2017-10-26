@@ -1,4 +1,15 @@
-
+#' Create a Repository for Version Control
+#'
+#' TODO: Describe this better.
+#'
+#' @param path TODO
+#' @param add_dirs TODO
+#' @param change_dir TODO
+#'
+#' @return
+#' @export
+#'
+#' @examples
 create_repo <- function(path = getwd(), add_dirs = TRUE, change_dir = TRUE){
 
   # Create a new repo
