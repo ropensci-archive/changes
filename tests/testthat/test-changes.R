@@ -1,7 +1,7 @@
 context("changes = git status")
 library(stow)
 
-test_path    <- getwd()
+test_path <- getwd()
 
 test_that("changes() messages current branch", {
   path <- tempfile(pattern = "tmpInitFolder-")

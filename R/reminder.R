@@ -7,7 +7,7 @@
 #' @return NULL
 #' @export
 #'
-#' @examples
+#' @examples TODO
 reminder_delay <- function(minutes) {
   assertCount(minutes)
   # convert minutes to seconds of reminder delay, store in .cache environment
@@ -24,7 +24,7 @@ reminder_delay <- function(minutes) {
 #' @return NULL
 #' @export
 #'
-#' @examples
+#' @examples TODO
 schedule_reminder <- function() {
   # get the reminder delay from the .cache environment
   delay <- .cache$reminder_delay
