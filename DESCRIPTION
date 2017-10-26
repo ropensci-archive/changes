@@ -2,10 +2,10 @@ Package: stow
 Title: A simple interface and workflow for version control in R (implemented using git as backend but without the confusion)
 Version: 0.0.0.1
 Authors@R: c(
-    person("Diego", "Barneche", , "barnechedr@gmail.com", c("aut", "cre")),
-    person("Daniel", "Falster", , "", c("aut")),
-    person("Nick", "Golding", , "nick.golding.research@gmail.com", c("aut")),
-    person("Tim", "Churches", , "tim.churches@gmail.com", c("aut"))
+    person("Nick", "Golding", , "nick.golding.research@gmail.com", c("aut", "cre")),
+    person("Diego", "Barneche", , "barnechedr@gmail.com", c("aut")),
+    person("Tim", "Churches", , "tim.churches@gmail.com", c("aut")),
+    person("Daniel", "Falster", , "", c("aut"))
     )
 Description: This package provides a set of easy-to-use tools for beginners wanting to implement version control via git for their projects
 Depends: 
@@ -18,8 +18,14 @@ Imports:
   githug
 Remotes: jennybc/githug
 Suggests: 
+<<<<<<< HEAD
 	testthat,
     knitr,
     rmarkdown
+=======
+	 testthat,
+   knitr,
+   rmarkdown
+>>>>>>> master
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
