@@ -15,14 +15,13 @@ Four easy steps to success!
 What is a repository, you ask? A repository is a folder in which you store your project. The folder saves previous versions of your project and allows you to easily access them. 
   For example:
 
-``` {r, example}
+``` {r}
 #Create a brand new repository in a new or existing local project. Defaults to your current working directory
 create_repo("~/Desktop")
 
 #Download an existing repository from online
-download_repo("url here")
+download_repo("url")
 ```
-
   [insert picture depicting a conceptual repository here]
   
 2. Make some changes: work on your project as normal. Don't forget to save your changes. 
@@ -30,24 +29,49 @@ download_repo("url here")
 
 
 3. Use stow to review and visualise the changes you have made to your project.
-  [insert picture/code here]
-``` {r, echo = F}
+  [insert picture here]
 
+``` 
 changes()
-
 ```
 
 4. Once you are happy with your changes, record them in your repository. Your repository records a snapshot of your current project, adding it to the list of previous versions.   
-  [insert picture/code here]
+  [insert picture here]
+
+```{r}
+# automatically performs all of the steps to record your changes in your repository
+record()
+
+# two-step version of the same process that gives you a bit more control
+stage()
+commit()
+
+```
 
 
 ## More stuff! (Fixing stuff, moving back, saving stuff)
 
-5.  Fixing stuff!
-   - go back to previous versions
-6. Saving stuff online (non-local!!)
+5. Look at your history of records
+
+
+6.  Fixing stuff!
+```{r}   
+# Made a mistake? Return your project to your last record:
+scrub()
+
+# ...or to another previous record of your choice:
+retrieve(recordid)
+
+# take a peek into any older record 
+go_to(recordid)
+
+```
+
+7. Saving stuff online (non-local!!)
    - Must define local vs remote environments 
    - Push/Sync functions
+   
+
 
 # An example workflow
 
