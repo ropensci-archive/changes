@@ -1,0 +1,63 @@
+---
+title: "visualising progress"
+author: "Trouble"
+date: "26/10/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Notes 
+```{r}
+library(GGally)
+library(githug)
+library(tidyverse)
+library(listviewer)
+
+```
+
+
+```{r See history}
+
+git_history() %>% select(-sha) %>% knitr::kable()
+
+
+```
+
+# Visualising progress
+
+## Some ideas
+
+- Start with a chain - for the current user (argument to see what other people are doing, maybe all).
+- Visualise by timeline.
+
+## Tasks
+
+- Access current username? `author` field.
+- Does the data need to be ordered by time?
+
+```{r Munge}
+this_user <- "Nick Golding"
+
+# Get all users' history.
+all_history <- git_history()
+
+# Filter by user.
+this_user_data <- all_history %>% 
+  filter(author == this_user)
+
+
+git2r::commits() %>% jsonedit()
+```
+
+
+# Construct adjancency matrix
+
+```{r}
+matrix(c(0, 1, 0, 1, 0, 1, 0, 1, 0), 3, 3) %>% 
+  ggnet2()
+
+```
+
