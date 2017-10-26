@@ -1,0 +1,21 @@
+Package: ozrepro
+Title: Easy beginner introduction to version control in git for R users
+Version: 0.0.0.1
+Authors@R: c(
+    person("Diego", "Barneche", , "barnechedr@gmail.com", c("aut", "cre")),
+    person("Daniel", "Falster", , "", c("aut", "cre")),
+    person("Nick", "Golding", , "nick.golding.research@gmail.com", c("aut", "cre"))
+    )
+Description: This package provides a set of easy-to-use tools for beginners wanting to implement version control in git for their projects
+Depends: 
+	R (>= 3.2.2)
+License: GPL-2
+LazyData: true
+Imports:
+	git2r
+Suggests: 
+	testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1

@@ -1,6 +1,9 @@
 #############
 # oxygenizing
 #############
+rm(list = ls())
+library(roxygen2)
+roxygen2::roxygenise(clean = TRUE)
 
 
 # # full commit dataframe:
