@@ -4,7 +4,8 @@ Version: 0.0.0.1
 Authors@R: c(
     person("Diego", "Barneche", , "barnechedr@gmail.com", c("aut", "cre")),
     person("Daniel", "Falster", , "", c("aut", "cre")),
-    person("Nick", "Golding", , "nick.golding.research@gmail.com", c("aut", "cre"))
+    person("Nick", "Golding", , "nick.golding.research@gmail.com", c("aut", "cre")),
+    person("Tim", "Churches", , "tim.churches@gmail.com", c("aut", "cre"))
     )
 Description: This package provides a set of easy-to-use tools for beginners wanting to implement version control via git for their projects
 Depends: 
