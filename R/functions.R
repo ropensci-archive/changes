@@ -1,46 +1,40 @@
-# grit: a friendlier version control interface for R
-
-library (git2r)
-
-# repo <- clone("https://github.com/goldingn/default.git", "./default")
-# repo <- repository("default")
-
-# cache a cache environment in the package namespace
-cache <- new.env()
-cache$repo <- NULL
-cache$config <- NULL
-
 # helpers
-some <- function (x)
+some <- function (x) {
   length(x) > 0
+}
 
-none <- function (x)
+none <- function (x) {
   !some(x)
+}
 
-one <- function (x)
+one <- function (x) {
   length(x) == 1
+}
 
 # nicely format the number of file changes or line additions / deletions
 paste_num <- function (number, item, event, fallback = NULL) {
   
-  if (number == 0)
+  if (number == 0) {
     text <- fallback
-  else if (number == 1)
+  } else if (number == 1) {
     text <- sprintf("%i %s %s", number, item, event)
-  else
+  } else {
     text <- sprintf("%i %ss %s", number, item, event)
+  }
   
   text
 }
 
-ready <- function()
+ready <- function () {
   some(cache$repo)
+}
 
 # call this at the top of all exported functions. If the repo isn't set up, try
 # to find it here & error appropriately
 check_ready <- function () {
-  if (!ready())
+  if (!ready()) {
     set_repo(verbose = FALSE)
+  }
 }
 
 repo_path <- function () {
@@ -60,9 +54,9 @@ set_repo <- function (path = ".", event = c("error", "warn", "message"), verbose
   event <- match.arg(event)
   
   result <- tryCatch(git2r::repository(path, discover = TRUE),
-                  error = function(e) e)
+                  error = function (e) e)
   
-  if (inherits(result, 'error')) {
+  if (inherits(result, "error")) {
     
     msg <- paste("could not find a git repository in",
                  normalizePath(path),
@@ -77,8 +71,9 @@ set_repo <- function (path = ".", event = c("error", "warn", "message"), verbose
     
     cache$repo <- result
     
-    if (verbose)
+    if (verbose) {
       cat("using git repository at", repo_path())
+    }
     
     
   }
@@ -104,8 +99,9 @@ format_changes <- function (changed, file_names = TRUE) {
   
   cols <- data.frame(line_changes, staged)
   
-  if (file_names)
+  if (file_names) {
     cols <- data.frame(paste0(changed$file, ":"), cols)
+  }
   
   names(cols) <- NULL
   table <- capture.output(print(cols, row.names = FALSE, right = FALSE))
@@ -125,17 +121,20 @@ diff_df <- function (staged = FALSE) {
   df <- do.call(rbind, df_list)
   
   # if it was empty, return an empty dataframe with the right columns
-  if (none(df))
+  if (none(df)) {
     df <- data.frame(file = "", add = 0, del = 0)[0, ]
+  }
   
   df
 }
 
-quotes <- function (x)
+quotes <- function (x) {
   paste0('"', x, '"')
+}
 
-quote_list <- function (x)
+quote_list <- function (x) {
   paste(quotes(x), collapse = ", ")
+}
 
 # nicer summary of what has changed, somewhere between status and diff
 changes <- function (files = NULL) {
@@ -181,8 +180,9 @@ changes <- function (files = NULL) {
     line_changes <- format_changes(changed,
                                    file_names = !one(files))  
     
-    if (one(files))
+    if (one(files)) {
       headline <- NULL
+    }
     
   } else {
     
@@ -227,19 +227,19 @@ print.commit_list <- function (x, ...) {
   cat(display, sep = "\n")
 }
 
-head.commit_list <- function(x, ...) {
+head.commit_list <- function (x, ...) {
   x <- utils:::head.default(x, ...)
   class(x) <- "commit_list"
   x
 }
 
-tail.commit_list <- function(x, ...) {
+tail.commit_list <- function (x, ...) {
   x <- utils:::tail.default(x, ...)
   class(x) <- "commit_list"
   x
 }
 
-commits <- function() {
+commits <- function () {
   commit_list <- git2r::commits(cache$repo)
   class(commit_list) <- "commit_list"
   commit_list
@@ -296,39 +296,3 @@ checkout_branch <- function (branch) {
   git2r::checkout(cache$repo, branch)
   
 }
-
-# # full commit dataframe:
-# as(cache$repo, "data.frame")
-
-# plain text explanation of what has changed, and what is staged
-changes()
-changes("default.R")
-
-stage("default.R")
-commit()
-
-amend_message("removed whitespace")
-
-branches()
-# master [f4f841] (Local) (HEAD) master
-remote_repos()
-# origin https://github.com/goldingn/default.git
-
-
-
-
-# have a default remote, or set of remotes?
-# push()
-
-# fetch changes from remotes
-# fetch()
-
-# provide nice messages and guidance for merge conflicts
-# pull()
-
-# fetch from all (or named) remotes, check whether a merge is possible without
-# conflicts, and explain what the issue is in plain english, and push to al all
-# (or named) remotes
-# sync()
-
-# checkout()
