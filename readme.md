@@ -15,12 +15,21 @@ Stow uses git under the hood. Git is a popular version control system used by pr
 ## Get started!
 
 Three steps to success!
-1. Make/download a repository! (this is like turning on track changes)
-  - Must define a repository (use pictures!)
-2. Make some changes
-3. Review those changes (encourage small increments)
-4. Record your changes in your repository. 
-(repeat steps 2-4 at short intervals)
+
+1. Start a new repository (or download an existing one). 
+What is a repository, you ask? A repository is a folder in which you store your project. The folder saves previous versions of your project and allows you to easily access them. 
+  For example:
+  [insert picture/code here]
+  
+2. Make some changes: work on your project as normal. Don't forget to save your changes. 
+  [insert picture/code here]
+
+3. Use stow to review and visualise the changes you have made to your project.
+  [insert picture/code here]
+
+4. Once you are happy with your changes, record them in your repository. Your repository records a snapshot of your current project, adding it to the list of previous versions.   
+  [insert picture/code here]
+
 
 ## More stuff! (Fixing stuff, moving back, saving stuff)
 
