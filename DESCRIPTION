@@ -18,14 +18,8 @@ Imports:
   githug
 Remotes: jennybc/githug
 Suggests: 
-<<<<<<< HEAD
-	testthat,
-    knitr,
-    rmarkdown
-=======
 	 testthat,
    knitr,
    rmarkdown
->>>>>>> master
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
