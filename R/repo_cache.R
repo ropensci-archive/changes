@@ -10,7 +10,7 @@
 #'
 #' @return a git2r repository
 #' @noRd
-#' @importFrom git2r discover_repository
+#' @importFrom git2r discover_repository repository
 #'
 #' @examples
 get_repo <- function () {
