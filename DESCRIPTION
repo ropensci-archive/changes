@@ -12,10 +12,13 @@ Depends:
 License: GPL-2
 LazyData: true
 Imports:
-	git2r
+	git2r,
+    githug
+Remotes: jennybc/githug
 Suggests: 
 	testthat,
     knitr,
     rmarkdown
+
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
