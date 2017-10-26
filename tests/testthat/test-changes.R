@@ -1,5 +1,5 @@
 context("changes = git status")
-library(git2r)
+library(stow)
 
 test_path    <- getwd()
 
@@ -12,7 +12,10 @@ test_that("changes() messages current branch", {
   git2r::add(repo, "a")
   invisible(git2r::commit(repo, message = "init"))
   setwd(repo@path)
-  expect_message(changes(), "no changes since the last commit")
+  cache <- new.env()
+  cache$repo <- NULL
+  cache$config <- NULL
+  expect_message(stow::changes(), "no changes since the last commit")
   setwd(test_path)
 })
 
