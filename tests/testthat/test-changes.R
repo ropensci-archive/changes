@@ -1,5 +1,4 @@
 context("changes = git status")
-library(stow)
 
 test_path <- getwd()
 
