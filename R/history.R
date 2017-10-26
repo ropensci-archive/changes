@@ -1,44 +1,42 @@
-source('R/functions.R')
-library('git2r')
-library('githug')
-repo <- repository(getwd())
-
-devtools::install_github("jennybc/githug")
-
-is_empty(repo)
-branches(repo)
-
-repo_path(repo)
-repo_path()
-
-git_history <- function(repo = ".", ...) {
-  commits <- git2r::commits(as.git_repository(repo), ...)
-  if (length(commits) == 0L) {
-    message("No commits yet.")
-    return(invisible())
-  }
-  raw_author <- purrr::map(commits, methods::slot, "author")
-  ctbl <- tibble::tibble(
-    sha = purrr::map_chr(commits, methods::slot, "sha"),
-    message = purrr::map_chr(commits, methods::slot, "message"),
-    when = purrr::map(raw_author, methods::slot, "when"),
-    author = purrr::map_chr(raw_author, methods::slot, "name"),
-    email = purrr::map_chr(raw_author, methods::slot, "email")
-  )
-  ctbl$when <- purrr::map(ctbl$when, ~ methods::as(.x, "POSIXct"))
-  ctbl$when <- do.call(c, ctbl$when)
-  structure(ctbl, class = c("git_history", class(ctbl)))
-}
-
+#' Shows the commit log
+#'
+#' This function shows me
+#'
+#' @param process_object process object obtained from process function
+#' @return decon list containing amended dataframe, bounds, model output, mass fractions
+#' @keywords thermogravimetry fraser-suzuki deconvolution
+#' @import git2r 
+#' @importFrom stats integrate setNames loess
+#' @examples
+#'
 #' @export
-print.git_history <- function(x, ...) {
-  x_pretty <- tibble::tibble(
-    sha = substr(x$sha, 1, 7),
-    message = sprintf("%-24s", ellipsize(x$message, 24)),
-    when = format(x$when, format = "%Y-%m-%d %H:%M"),
-    author = x$author,
-    email = x$email
-  )
-  print(x_pretty)
-  invisible(x)
+
+history <- function ( ) {
+  library('git2r')
+  #repo <- get_repo()
+  repo <- git2r::repository(getwd())
+  records <- git2r::commits(repo)
+  
+  
+  
+  obj <- 'A; B; C'
+  grViz("
+
+  digraph boxes_and_circles {
+
+  node [shape = circle]
+  obj
+
+  node [shape = box]
+  1
+  }
+      
+        
+  ")
+    
+  
 }
+
+
+
+
