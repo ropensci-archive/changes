@@ -78,9 +78,8 @@ format_changes <- function (changed, file_names = TRUE) {
   for (i in seq_len(nrow(changed))) {
     line_changes <- c(line_changes, format_change(changed[i, ]))
   }
-  staged <- ifelse(changed$staged, "   (staged)", "")
   
-  cols <- data.frame(line_changes, staged)
+  cols <- data.frame(line_changes)
   
   if (file_names) {
     cols <- data.frame(paste0(changed$file, ":"), cols)
