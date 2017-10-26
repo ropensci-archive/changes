@@ -1,12 +1,12 @@
-Package: ozrepro
-Title: Easy beginner introduction to version control in git for R users
+Package: stow
+Title: A simple interface and workflow for version control in R (implemented using git as backend but without the confusion)
 Version: 0.0.0.1
 Authors@R: c(
     person("Diego", "Barneche", , "barnechedr@gmail.com", c("aut", "cre")),
     person("Daniel", "Falster", , "", c("aut", "cre")),
     person("Nick", "Golding", , "nick.golding.research@gmail.com", c("aut", "cre"))
     )
-Description: This package provides a set of easy-to-use tools for beginners wanting to implement version control in git for their projects
+Description: This package provides a set of easy-to-use tools for beginners wanting to implement version control via git for their projects
 Depends: 
 	R (>= 3.2.2)
 License: GPL-2
