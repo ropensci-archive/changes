@@ -72,7 +72,7 @@ set_repo <- function (path = ".", event = c("error", "warn", "message"), verbose
     cache$repo <- result
     
     if (verbose) {
-      cat("using git repository at", repo_path())
+      message("using git repository at", repo_path())
     }
     
     
@@ -190,7 +190,7 @@ changes <- function (files = NULL) {
     
   }
   
-  cat(headline, line_changes)
+  message(headline, line_changes)
   
 }
 
@@ -224,7 +224,7 @@ commit_all <- function (message = NULL) {
 
 print.commit_list <- function (x, ...) {
   display <- capture.output(. <- lapply(x, show))
-  cat(display, sep = "\n")
+  message(display, sep = "\n")
 }
 
 head.commit_list <- function (x, ...) {
@@ -255,7 +255,7 @@ print.branch_list <- function (x, ...) {
                    stringsAsFactors = FALSE)
   names(df) <- NULL
   display <- capture.output(print(df, right = FALSE, row.names = FALSE))
-  cat(display[-1], sep = "\n")
+  message(display[-1], sep = "\n")
 }
 
 # want to list names and URLs, not branches
@@ -296,3 +296,15 @@ checkout_branch <- function (branch) {
   git2r::checkout(cache$repo, branch)
   
 }
+
+set_reminder <- function(minutes) {
+  # convert minutes to seconds of reminder delay in seconds somewhere 
+}
+
+# This needs to be called at the tope of every stow function,
+# as well as in the .onLoad of the package
+schedule_reminder <- function() {
+  # get the reminder delay from wherever
+  later::later(function() { print( changes())}, delay=delay)
+}
+
