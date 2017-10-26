@@ -17,7 +17,7 @@ What is a repository, you ask? A repository is a folder in which you store your 
 
 ``` {r}
 #Create a brand new repository in a new or existing local project. Defaults to your current working directory
-create_repo("~/Desktop")
+create_repo("~/Desktop/myproject")
 
 #Download an existing repository from online
 download_repo("url")
@@ -28,7 +28,7 @@ download_repo("url")
   [insert picture/code here]
 
 
-3. Use stow to review and visualise the changes you have made to your project.
+3. Review and visualise the changes you have made to your project.
   [insert picture here]
 
 ``` 
@@ -49,12 +49,22 @@ commit()
 ```
 
 
-## More stuff! (Fixing stuff, moving back, saving stuff)
+## Fixing stuff, moving back, recording stuff
 
 5. Look at your history of records
 
+```{r}
+# print a history of your past records in your console:
+print(gethistory())
+
+# ...or depict it in an [interactive?] plot!
+plot(gethistory())
+
+```
+
 
 6.  Fixing stuff!
+
 ```{r}   
 # Made a mistake? Return your project to your last record:
 scrub()
@@ -67,15 +77,21 @@ go_to(recordid)
 
 ```
 
-7. Saving stuff online (non-local!!)
-   - Must define local vs remote environments 
-   - Push/Sync functions
+7. Saving stuff online
+When you work on your computer, you are usually working in what is called the 'local' environment. The local environment encompasses anything housed on your computer's hard drive. If you want to collaborate or make your work available to others, it's a good idea to put it 'in the cloud,' in other words, in a 'remote' repository. These are housed on a server somewhere else in the world, and can be accessed online. This can also provide additional safety in case you lose your work in your local environment. 
+ 
+```{r}
+# Synchronize your work with a new or existing remote repository
+sync("url")
+```
    
 
 
 # An example workflow
 
+```{r}
 
+```
 
 
 # Installation
