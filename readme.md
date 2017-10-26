@@ -1,10 +1,5 @@
 # simpler version control from R
 
-This is a work in progress!
-
-Our aim is to create a simpler and more intuitive interface to version control of code than git.
-
-
 ## What does stow do?
 
 Stow allows beginners with minimal programming experience to use version control. Version control is a framework that saves previous versions of your work as you develop your projects (Like 'Track changes' in MS Word). You can then easily look at previous versions, merge changes, and collaborate with others, but without the headache! 
@@ -38,4 +33,13 @@ What is a repository, you ask? A repository is a folder in which you store your 
 6. Saving stuff online (non-local!!)
    - Must define local vs remote environments 
    - Push/Sync functions
+
+# Installation
+
+This package depends on the [githug](https://github.com/jennybc/githug) package. ou can install githug from github with:
+
+```
+# install.packages("devtools")
+devtools::install_github("jennybc/githug")
+```
 
