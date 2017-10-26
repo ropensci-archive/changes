@@ -52,8 +52,16 @@ get_repo <- function () {
     }
     
   }
-  
+
+  # stage everything
+  stage_all(repo)
+    
   # return the object
   invisible(repo)
   
+}
+
+# EVERYTHING NOT IGNORED IS TRACKED!
+stage_all <- function (repo) {
+  git2r::add(repo, "./*")
 }
