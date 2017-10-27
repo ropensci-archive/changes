@@ -1,4 +1,4 @@
 library(testthat)
-library(ozrepro)
+library(stow)
 
-test_check("ozrepro")
+test_check("stow")

@@ -5,9 +5,14 @@ Authors@R: c(
     person("Nick", "Golding", , "nick.golding.research@gmail.com", c("aut", "cre")),
     person("Diego", "Barneche", , "barnechedr@gmail.com", c("aut")),
     person("Tim", "Churches", , "tim.churches@gmail.com", c("aut")),
-    person("Daniel", "Falster", , "", c("aut"))
+    person("Daniel", "Falster", , "", c("aut")),
+    person("Anikó", "Tóth", , "", c("aut")),
+    person("Damjan", "Vukcevic", , "damjan@vukcevic.net", c("aut")),
+    person("Saras", "Windecker", , "", c("aut")),
+    person("Stefan", "Bache", , "", c("aut")),
+    person("Charles", "Gray", , "", c("aut"))
     )
-Description: This package provides a set of easy-to-use tools for beginners wanting to implement version control via git for their projects
+Description: This package provides a set of easy-to-use tools for beginners wanting to implement version control via git for their projects.
 Depends: 
 	R (>= 3.2.2)
 License: GPL-2
