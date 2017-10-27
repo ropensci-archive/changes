@@ -1,10 +1,35 @@
 #' Record Changes in Files under Version Control.
 #'
 #' TODO Describe this better.
+#' 
+#' @param message character: the message to be added to the version control 
+#'   checkpoint.
 #'
-#' @return TODO
+#' @return the git2r commit object (S4). TODO: maybe return something nicer.
+#'   
+#' @importFrom git2r add commit
+#'   
 #' @export
-record <- function()
+record <- function(message)
 {
+  repo <- 1# get_repo()
+ 
+  if (!head_at_master()) {
+    # We are in detached head state...
+    # commit the diffs to master->head  on top and linearize.  
+    cat("You are currently behind the latest version.\n")
+    cat("Do you want to add your changes and make this the latest version? [Yes/No]? ")
+    answer <- readLines(n = 1, warn = FALSE)
+    if (!any(c("y", "ye", "yes") %in% tolower(answer)))
+      return()
+  
+    timestamp <- gsub("[^0-9]", "", Sys.time())  
+    git2r::checkout(repo, branch = timestamp, create = TRUE)
+  } 
+  
+  # Stage unstaged changes
+  git2r::add(repo, "*") 
 
+  git2r::commit(repo, message = message)  
 }
+
