@@ -1,4 +1,4 @@
-# simpler version control from R
+# simpler, easier version control from R
 
 ## What does stow do?
 
