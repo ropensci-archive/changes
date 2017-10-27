@@ -7,11 +7,11 @@
 reminder_delay(minutes)
 }
 \arguments{
-\item{minutes}{Delay in minutes}
+\item{minutes}{delay in minutes}
+}
+\value{
+nothing
 }
 \description{
 TODO: Describe this better.
-}
-\examples{
-TODO
 }

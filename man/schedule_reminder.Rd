@@ -6,9 +6,9 @@
 \usage{
 schedule_reminder()
 }
+\value{
+nothing
+}
 \description{
 TODO: This needs to be called at the tope of every stow function, as well as in the .onLoad of the package
-}
-\examples{
-TODO
 }

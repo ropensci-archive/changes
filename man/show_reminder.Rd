@@ -6,9 +6,9 @@
 \usage{
 show_reminder()
 }
+\value{
+nothing
+}
 \description{
 Show a reminder message
-}
-\examples{
-TODO
 }
