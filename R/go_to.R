@@ -10,14 +10,11 @@
 #' @export
 go_to <- function(sha)
 {
-  repo <- get_repo()
-  
-  commits   <- git2r::commits(repo)
-  shas      <- vapply(commits, function(x) x@sha, character(1))
+  shas <- get_shas(repo, nchar(sha))
   
   if (!sha %in% shas) {
     stop("The provided sha is not found.")
   }
   
-  invisible(git2r::checkout(repo, sha))
+  call_system("git", c("checkout", sha))
 }
