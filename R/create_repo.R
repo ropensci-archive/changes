@@ -13,6 +13,7 @@ create_repo <- function (path = getwd(), add_structure = TRUE, change_wd = TRUE,
   # Create a new repo
   # Possibly want more specific error messages than exist here?
   init(path)
+  message("* Initialising git repository in:\n  ", path)
 
   # record current path
   old_dir <- getwd()
