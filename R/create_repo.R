@@ -23,10 +23,11 @@ create_repo <- function (path = getwd(), add_structure = TRUE, change_wd = TRUE)
   setwd(path)
 
   if (add_structure) {
-    dir.create("data", TRUE, FALSE)
-    dir.create("output", TRUE, FALSE)
-    dir.create("ignore", TRUE, FALSE)
-    dir.create("R", TRUE, FALSE)
+    folders  <-  c("data", "output", "ignore", "R")
+    for (k in seq_along(folders)) {
+      dir.create(folders[k], TRUE, FALSE)
+      file.create(file.path(folders[k], '.keep'), TRUE)
+    }
 
     file_create(c("# About my project", "", "My data is..."), "README.md")
     file_create(c("# About my data", "", "My data is..."), "data/README.md")
