@@ -5,9 +5,10 @@
 #' @param path TODO
 #' @param add_dirs TODO
 #' @param change_dir TODO
+#' @param reminders set reminder delay in minutes, zero disables reminders
 #'
 #' @export
-create_repo <- function(path = getwd(), add_dirs = TRUE, change_dir = TRUE){
+create_repo <- function(path = getwd(), add_dirs = TRUE, change_dir = TRUE, reminder_delay = 30){
 
   # Create a new repo
   # Possibly want more specific error messages than exist here?
@@ -39,6 +40,10 @@ create_repo <- function(path = getwd(), add_dirs = TRUE, change_dir = TRUE){
                 ".gitignore")
   }
 
+  # set the reminders delay and schedule the first reminder
+  reminder_delay(reminder_delay)
+  schedule_reminder()
+  
   # initial commit
   # TODO: Call here to changes function to make first snapshot
 

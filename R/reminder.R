@@ -18,6 +18,7 @@ reminder_delay <- function(minutes) {
     msg <- paste("Reminders set for", minutes, "minutes")
   }
   message(msg) 
+  schedule_reminder()
   invisible(NULL)
 }
 
@@ -33,7 +34,9 @@ reminder_delay <- function(minutes) {
 #' @examples TODO
 schedule_reminder <- function() {
   # get the reminder delay from the .cache environment
+  delay <- NULL
   delay <- .cache$reminder_delay
+  if (is.null(delay)) delay <= 60*30
   if (delay > 0) {
     later::later(function() { show_reminder() }, delay=delay)
   }
@@ -49,7 +52,7 @@ schedule_reminder <- function() {
 #'
 #' @examples TODO
 show_reminder <- function() {
-  n_changes <- changes()
+  n_changes <- changes(silent=TRUE)
   if (n_changes) {
     if (n_changes < 4) {
       msg <- "\nHey, it's been a while since you record()ed your changes..\n"
@@ -58,7 +61,11 @@ show_reminder <- function() {
     }      
     message(msg)
     changes()
+    # message(print(statquotes::statquote()))
   }
+  # reschedule the reminder
+  schedule_reminder()
+  # return nothing
   invisible(NULL)
 }
 

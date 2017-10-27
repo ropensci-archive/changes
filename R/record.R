@@ -6,5 +6,6 @@
 #' @export
 record <- function()
 {
-
+  # schedule the next reminder
+  schedule_reminder()
 }
