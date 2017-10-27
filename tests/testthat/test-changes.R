@@ -2,18 +2,8 @@ context("changes = git status")
 
 test_path <- getwd()
 
-test_that("changes() message: there\"s something untracked", {
-  path <- tempfile(pattern = "tmpInitFolder-")
-  dir.create(path)
-  repo <- git2r::init(path)
-  git2r::config(repo, user.name = "tmpUser", user.email = "tmpUser@example.com")
-  write(a <- "a", file = file.path(path, "a"))
-  setwd(repo@path)
-  expect_message(changes(), "Untracked files:\n a")
-  setwd(test_path)
-})
-
 test_that("changes() message: there\"s something staged that needs to be committed", {
+  .cache  <- new.env()
   path <- tempfile(pattern = "tmpInitFolder-")
   dir.create(path)
   repo <- git2r::init(path)
@@ -21,11 +11,16 @@ test_that("changes() message: there\"s something staged that needs to be committ
   write(a <- "a", file = file.path(path, "a"))
   setwd(repo@path)
   git2r::add(repo, "a")
-  expect_message(changes(), "new file:\t a")
+  invisible(git2r::commit(repo, message = "init"))
+  write(b <- "b", file = file.path('.', "b"))
+  git2r::add(repo, "b")
+  expect_message(changes(), "1 file changed since the last commit:\n\n b:   1 line added\n")
   setwd(test_path)
 })
 
 test_that("changes() message: clean history", {
+  .cache  <-  stow:::.cache
+  .cache$repo  <- NULL
   path <- tempfile(pattern = "tmpInitFolder-")
   dir.create(path)
   repo <- git2r::init(path)
