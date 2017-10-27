@@ -4,7 +4,10 @@
 #' @importFrom git2r init commits
 init <- function (path) {
   
-  path <- normalizePath(path)
+  path <- normalizePath(path, mustWork = FALSE)
+  
+  if (!dir.exists(path))
+    dir.create(path)
   
   # create/get a repo
   repo <- git2r::init(path)
@@ -32,5 +35,13 @@ init <- function (path) {
     }
 
   }
+  
+  # make an initial commit
+  keep_path <- file.path(path, ".keep")
+  file.create(keep_path)
+  git2r::add(repo, keep_path)
+  git2r::commit(repo, "initial commit")
+  
+  invisible(NULL)
   
 }
