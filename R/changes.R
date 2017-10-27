@@ -2,9 +2,9 @@
 #'
 #' TODO Describe this better.
 #'
-#' @return TODO
+#' @return number of changes
 #' @export
-changes <- function (files = NULL) { 
+changes <- function (files = NULL, silent = FALSE) { 
   
   repo <- get_repo()
   
@@ -57,8 +57,8 @@ changes <- function (files = NULL) {
     
   }
   
-  message(headline, line_changes)
-  
+  if (!silent) message(headline, line_changes)
+  return(nrow(changed))
 }
 
 # format the line changes for each modified file
