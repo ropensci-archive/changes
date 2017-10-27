@@ -6,7 +6,6 @@
 #' @importFrom methods slot as 
 #' @importFrom tibble tibble 
 #' @importFrom git2r commits
-#' @examples
 #' 
 #' @export
 

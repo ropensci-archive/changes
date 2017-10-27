@@ -5,6 +5,7 @@
 #' @param minutes delay in minutes
 #'
 #' @return nothing
+#' @importFrom checkmate assertCount
 #' @export
 reminder_delay <- function(minutes) {
   assertCount(minutes)
@@ -41,6 +42,7 @@ schedule_reminder <- function() {
 #'
 #' @return nothing
 #' @export
+#' @importFrom statquotes statquote
 show_reminder <- function() {
   n_changes <- changes(silent=TRUE)
   if (n_changes) {
