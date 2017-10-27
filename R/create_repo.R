@@ -3,29 +3,31 @@
 #' TODO: Describe this better.
 #'
 #' @param path TODO
-#' @param add_dirs TODO
-#' @param change_dir TODO
+#' @param add_structure TODO
+#' @param change_wd TODO
 #'
 #' @export
-create_repo <- function(path = getwd(), add_dirs = TRUE, change_dir = TRUE){
+create_repo <- function (path = getwd(), add_structure = TRUE, change_wd = TRUE) {
 
   # Create a new repo
   # Possibly want more specific error messages than exist here?
-  gr <- githug::git_init(path)
+  githug::git_init(path)
 
   # record current path
   old_dir <- getwd()
-  if(!change_dir)
+  if (path != old_dir && !change_wd) {
     on.exit(setwd(old_dir))
+  }
 
   # go into repo and setup directory structure
-  setwd(gr)
+  setwd(path)
 
-  if(add_dirs){
-    dir.create("data", TRUE, FALSE)
-    dir.create("output", TRUE, FALSE)
-    dir.create("ignore", TRUE, FALSE)
-    dir.create("R", TRUE, FALSE)
+  if (add_structure) {
+    folders  <-  c("data", "output", "ignore", "R")
+    for (k in seq_along(folders)) {
+      dir.create(folders[k], TRUE, FALSE)
+      file.create(file.path(folders[k], '.keep'), TRUE)
+    }
 
     file_create(c("# About my project", "", "My data is..."), "README.md")
     file_create(c("# About my data", "", "My data is..."), "data/README.md")
