@@ -13,6 +13,8 @@
 timeline <- function () {
 
   repo <- get_repo()
+  
+  repo <- git2r::repository(getwd())
   records <- git2r::commits(repo)
   
   if (length(records) == 0) {
@@ -32,7 +34,6 @@ timeline <- function () {
   log <- tibble::tibble(record_id, author, when, email, message, sha)
   
   structure(log, class = c('timeline', class(log)))
-  log
   
 }
 
