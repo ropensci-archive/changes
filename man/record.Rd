@@ -4,10 +4,14 @@
 \alias{record}
 \title{Record Changes in Files under Version Control.}
 \usage{
-record()
+record(message)
+}
+\arguments{
+\item{message}{character: the message to be added to the version control
+checkpoint.}
 }
 \value{
-TODO
+the git2r commit object (S4). TODO: maybe return something nicer.
 }
 \description{
 TODO Describe this better.

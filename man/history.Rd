@@ -15,4 +15,3 @@ This function shows the history of records made.
 \examples{
 
 }
-\keyword{}
