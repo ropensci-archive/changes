@@ -51,14 +51,18 @@ test_that("create_repo(): create repo in a new directory different from getwd() 
   dir.create(path)
   path <- normalizePath(path)
   expect_message(create_repo(path, add_structure = FALSE, change_wd = TRUE), paste0("* Initialising git repository in:\n  ", path))
-  browser()
-  system('git status')
   .cache  <-  stow:::.cache
   .cache$repo  <- NULL
-  expect_message(changes(), "no changes since the last commit")
- 
+  expect_message(changes(), "no changes since the last")
   # .git folder with no commits
   setwd(test_path)
 })
 
-# create repo twice: check for warning messages
+test_that("create_repo(): create repo twice returns error", {
+  path <- tempfile(pattern = "tmpInitFolder-")
+  dir.create(path)
+  path <- normalizePath(path)
+  expect_message(create_repo(path, add_structure = FALSE, change_wd = TRUE), paste0("* Initialising git repository in:\n  ", path))
+  expect_error(create_repo(path, add_structure = FALSE, change_wd = TRUE))
+  setwd(test_path)
+})

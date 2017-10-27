@@ -31,7 +31,6 @@ timeline <- function () {
   log <- tibble::tibble(record_id, author, when, email, message, sha)
   
   structure(log, class = c('timeline', class(log)))
-  log
   
 }
 

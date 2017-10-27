@@ -14,17 +14,21 @@ print.timeline <- function (x, ...) {
 
   x_rev <- x[seq(dim(x)[1],1),]
 
-  for (i in 1:length(x_rev)) {
+  output <- for (i in 1:length(x_rev)) {
     
     x_rev$message <- gsub("\\n+", ": ", x_rev$message)
-    cat(paste0('\t() Record ID: ', x_rev$record_id, '\n',
+    cat(paste0('\t() Record No: ', x_rev$record_id, '\n',
                '\t | Author: ', x_rev$author, '\n',
                '\t | Date & Time: ', x_rev$when, '\n',
                '\t | Message: ', x_rev$message, '\n',
+               '\t | sha key: ', x_rev$sha, '\n',
                '\t | \n',
                '\t | \n',
                '\t | \n'))
     
   }
+  
+  print(output)
+  invisible(x)
   
 }
