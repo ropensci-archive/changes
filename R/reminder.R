@@ -42,6 +42,7 @@ schedule_reminder <- function() {
 #'
 #' @return nothing
 #' @export
+#' @importFrom statquotes statquote
 show_reminder <- function() {
   n_changes <- changes(silent=TRUE)
   if (n_changes) {
