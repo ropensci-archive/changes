@@ -12,8 +12,6 @@
 timeline <- function () {
 
   repo <- get_repo()
-  
-  repo <- git2r::repository(getwd())
   records <- git2r::commits(repo)
   
   if (length(records) == 0) {
