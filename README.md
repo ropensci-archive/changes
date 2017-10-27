@@ -129,7 +129,7 @@ changes("myscript.R")
 record()
 
 # Remove the changes you have made since your last commit 
-scrub()  # (not yet implemented)
+scrub()
 
 # Look at your history of commits
 timeline()
