@@ -23,7 +23,10 @@ Imports:
 	later (>= 0.5),
   githug,
   checkmate,
-  statquotes
+  statquotes, 
+  tibble,
+  methods, 
+  igraph
 Remotes: jennybc/githug
 Suggests: 
 	 testthat,
