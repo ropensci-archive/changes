@@ -11,6 +11,7 @@
 #' @return a git2r repository
 #' @noRd
 #' @importFrom git2r discover_repository repository
+
 get_repo <- function () {
   
   # see where we are
@@ -52,8 +53,16 @@ get_repo <- function () {
     }
     
   }
-  
+
+  # stage everything
+  stage_all(repo)
+    
   # return the object
   invisible(repo)
   
+}
+
+# EVERYTHING NOT IGNORED IS TRACKED!
+stage_all <- function (repo) {
+  git2r::add(repo, "./*")
 }

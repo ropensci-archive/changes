@@ -4,10 +4,16 @@
 \alias{changes}
 \title{View Changes in Files under Version Control.}
 \usage{
-changes()
+changes(files = NULL, silent = FALSE)
+}
+\arguments{
+\item{files}{an optional character vector of files for which you want to see
+the changes}
+
+\item{silent}{if TRUE does not issue a message}
 }
 \value{
-TODO
+number of changes
 }
 \description{
 TODO Describe this better.

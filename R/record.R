@@ -12,7 +12,10 @@
 #' @export
 record <- function(message)
 {
-  repo <- 1# get_repo()
+  # schedule the next reminder
+  schedule_reminder()
+
+  repo <- get_repo()
 
   if (!head_at_master()) {
     # We are in detached head state...
