@@ -64,5 +64,5 @@ test_that("create_repo(): create repo twice returns error", {
   path <- normalizePath(path)
   expect_message(create_repo(path, add_structure = FALSE, change_wd = TRUE), paste0("* Initialising git repository in:\n  ", path))
   expect_error(create_repo(path, add_structure = FALSE, change_wd = TRUE))
-setwd(test_path)
+  setwd(test_path)
 })
