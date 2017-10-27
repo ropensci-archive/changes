@@ -2,6 +2,9 @@
 #'
 #' TODO Describe this better.
 #'
+#' @param files an optional character vector of files for which you want to see
+#'   the changes
+#'
 #' @return TODO
 #' @export
 changes <- function (files = NULL) { 
@@ -28,7 +31,8 @@ changes <- function (files = NULL) {
             call. = FALSE)
     }
     
-    files <- gsub(file.path(repo_path(), ""),
+    repo_path <- dirname(repo@path)
+    files <- gsub(file.path(repo_path, ""),
                   "", files)
     
     changed <- changed[changed$file %in% files, ]
@@ -70,7 +74,8 @@ format_change <- function (change) {
          paste_num(change$del, "line", "deleted"))
 }
 
-# format all of the line changes
+#' @noRd
+#' @importFrom utils capture.output
 format_changes <- function (changed, file_names = TRUE) {
   
   # can't apply here?

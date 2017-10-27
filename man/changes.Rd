@@ -6,6 +6,10 @@
 \usage{
 changes(files = NULL)
 }
+\arguments{
+\item{files}{an optional character vector of files for which you want to see
+the changes}
+}
 \value{
 TODO
 }
