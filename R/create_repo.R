@@ -12,7 +12,7 @@ create_repo <- function (path = getwd(), add_structure = TRUE, change_wd = TRUE,
 
   # Create a new repo
   # Possibly want more specific error messages than exist here?
-  githug::git_init(path)
+  init(path)
 
   # record current path
   old_dir <- getwd()

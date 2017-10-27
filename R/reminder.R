@@ -26,8 +26,6 @@ reminder_delay <- function(minutes) {
 #'
 #' TODO: This needs to be called at the tope of every stow function, as well as in the .onLoad of the package
 #'
-#' @param 
-#'
 #' @return NULL
 #' @export
 #'
@@ -44,8 +42,6 @@ schedule_reminder <- function() {
 }
 
 #' Show a reminder message
-#'
-#' @param 
 #'
 #' @return NULL
 #' @export
