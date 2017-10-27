@@ -42,10 +42,6 @@ changes()
 # automatically performs all of the steps to record your changes in your repository
 record()
 
-# two-step version of the same process that gives you a bit more control
-stage()
-commit()
-
 ```
 
 
@@ -55,10 +51,10 @@ commit()
 
 ```{ eval=FALSE}
 # print a history of your past records in your console:
-print(gethistory())
+timeline()
 
-# ...or depict it in an [interactive?] plot!
-plot(gethistory())
+# ...or depict it in a plot!
+plot(timeline())
 
 ```
 
@@ -67,7 +63,7 @@ plot(gethistory())
 
 ```{ eval=FALSE}   
 # Made a mistake? Return your project to your last record:
-scrub()
+scrub()  # (not yet implemented)
 
 # ...or to another previous record of your choice:
 retrieve(recordid)
@@ -82,7 +78,7 @@ When you work on your computer, you are usually working in what is called the 'l
  
 ```{ eval=FALSE}
 # Synchronize your work with a new or existing remote repository
-sync("url")
+sync("url")  # (not yet implemented)
 ```
    
 
@@ -96,7 +92,7 @@ setwd("~/Desktop/myproject")
 create_repo()
 
 # tell the repository not to track your large data output files
-ignore("*.csv")
+ignore("*.csv")  # (not yet implemented)
 
 # set reminders to record your changes every 15 minutes (this automatically defaults to 30 minutes)
 reminder_delay(minutes = 15)
@@ -114,9 +110,5 @@ record()
 # review and record your changes
 changes("myscript.R")
 record()
-
-# Remove the changes you have made since your last commit 
-scrub()
-
 
 ```
