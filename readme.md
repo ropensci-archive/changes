@@ -90,6 +90,34 @@ sync("url")
 # An example workflow
 
 ```{r}
+setwd("~/Desktop/myproject")
+
+# make a new repository in your working directory
+create_repo()
+
+# tell the repository not to track your large data output files
+ignore("*.csv")
+
+# set reminders to record your changes every 15 minutes (this automatically defaults to 30 minutes)
+reminder_delay(minutes = 15)
+
+# work on you project as normal 
+
+# review your changes. By default it will show all changed files, but you can specify which file to show. 
+changes("myscript.R") 
+
+# record changes, defaults to all changes.
+record()
+
+# continue to work on you project as normal 
+
+# review and record your changes
+changes("myscript.R")
+record()
+
+# Remove the changes you have made since your last commit 
+scrub()
+
 
 ```
 
