@@ -1,9 +1,31 @@
 context("changes = git status")
-library(stow)
 
-test_path    <- getwd()
+test_path <- getwd()
 
-test_that("changes() messages current branch", {
+test_that("changes() message: there\"s something untracked", {
+  path <- tempfile(pattern = "tmpInitFolder-")
+  dir.create(path)
+  repo <- git2r::init(path)
+  git2r::config(repo, user.name = "tmpUser", user.email = "tmpUser@example.com")
+  write(a <- "a", file = file.path(path, "a"))
+  setwd(repo@path)
+  expect_message(changes(), "Untracked files:\n a")
+  setwd(test_path)
+})
+
+test_that("changes() message: there\"s something staged that needs to be committed", {
+  path <- tempfile(pattern = "tmpInitFolder-")
+  dir.create(path)
+  repo <- git2r::init(path)
+  git2r::config(repo, user.name = "tmpUser", user.email = "tmpUser@example.com")
+  write(a <- "a", file = file.path(path, "a"))
+  setwd(repo@path)
+  git2r::add(repo, "a")
+  expect_message(changes(), "new file:\t a")
+  setwd(test_path)
+})
+
+test_that("changes() message: clean history", {
   path <- tempfile(pattern = "tmpInitFolder-")
   dir.create(path)
   repo <- git2r::init(path)
@@ -12,10 +34,7 @@ test_that("changes() messages current branch", {
   git2r::add(repo, "a")
   invisible(git2r::commit(repo, message = "init"))
   setwd(repo@path)
-  cache <- new.env()
-  cache$repo <- NULL
-  cache$config <- NULL
-  expect_message(stow::changes(), "no changes since the last commit")
+  expect_message(changes(), "no changes since the last commit")
   setwd(test_path)
 })
 
