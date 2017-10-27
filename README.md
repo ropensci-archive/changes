@@ -109,7 +109,7 @@ setwd("~/Desktop/myproject")
 create_repo()
 
 # tell the repository not to track your large data output files
-ignore("*.csv")  # (not yet implemented)
+ignore("*.csv")
 
 # set reminders to record your changes every 15 minutes (this automatically defaults to 30 minutes)
 reminder_delay(minutes = 15)

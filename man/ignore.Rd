@@ -2,16 +2,22 @@
 % Please edit documentation in R/ignore.R
 \name{ignore}
 \alias{ignore}
-\title{Add files or folders to list of ignored items}
+\alias{unignore}
+\title{Ignore (or unignore) files and folders from version control}
 \usage{
 ignore(files)
+
+unignore(files)
 }
 \arguments{
-\item{files}{vector or list files to retrive}
-}
-\value{
-TODO
+\item{files}{a character vector of files to ignore}
 }
 \description{
-TODO Describe this better.
+By default, stow will keep track of (almost) all of the files in
+  your project. You can use \code{ignore()} to make stow ignore certain files
+  (not track different versions of them), and \code{unignore()} to make it
+  track files that are currently ignored.
+
+  You can use wildcard characters to match multiple files, e.g.
+  \code{ignore("*.csv")} to ignore all csv files.
 }
