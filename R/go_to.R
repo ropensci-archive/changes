@@ -2,11 +2,19 @@
 #'
 #' TODO Describe this better.
 #'
-#' @param where The snapshot to go to.
+#' @param sha The snapshot to go to.
 #'
+#' @importFrom git2r commits checkout
+#' 
 #' @return TODO
 #' @export
-go_to <- function(where)
+go_to <- function(sha)
 {
-
+  shas <- get_shas(repo, nchar(sha))
+  
+  if (!sha %in% shas) {
+    stop("The provided sha is not found.")
+  }
+  
+  call_system("git", c("checkout", sha))
 }

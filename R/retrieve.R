@@ -21,8 +21,8 @@ retrieve <- function(sha, files = NULL) {
 
   timestamp <- gsub("[^0-9]", "", Sys.time())
   commits   <- git2r::commits(repo)
-  shas      <- vapply(commits, function(x) x@sha, character(1))
-  index     <- which(sha == shas) - 1
+  shas      <- get_shas(nchar(sha))
+  index     <- which(sha == shas) - 2
 
   if (index < 0) {
     stop("Can not find corresponding record.")
