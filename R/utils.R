@@ -5,7 +5,6 @@ file_create <- function(txt, filename){
   }
 }
 
-
 # helpers
 some <- function (x) {
   length(x) > 0
@@ -40,7 +39,6 @@ Sys_which <- function(x) {
   }
   ret
 }
-
 
 #' Function imported from callr package;  makes it easy to call a
 #' system command from R and have it behave.

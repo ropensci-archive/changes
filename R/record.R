@@ -10,14 +10,12 @@
 #' @importFrom git2r add commit
 #'
 #' @export
-record <- function(message)
-{
-  # schedule the next reminder
-  schedule_reminder()
-
+record <- function (message) {
+  
   repo <- get_repo()
 
   if (!head_at_master()) {
+    
     # We are in detached head state...
     # commit the diffs to master->head  on top and linearize.
     cat("You are currently behind the latest version.\n")
@@ -33,6 +31,9 @@ record <- function(message)
     retrieve(sha)
     call_system("git", "stash pop")
   }
+  
+  # check the message
+  message <- check_message(message)
 
   # Stage unstaged changes
   git2r::add(repo, "*")
