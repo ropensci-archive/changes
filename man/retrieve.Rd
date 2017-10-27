@@ -4,10 +4,12 @@
 \alias{retrieve}
 \title{Retrieve code from a past commit.}
 \usage{
-retrieve(files = NULL)
+retrieve(sha, files = NULL)
 }
 \arguments{
-\item{files}{vector or list files to retrive}
+\item{sha}{The sha to retrieve}
+
+\item{files}{vector or list files to retrive TODO: add this}
 }
 \value{
 TODO
