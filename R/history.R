@@ -3,7 +3,6 @@
 #' This function shows the history of records made. 
 #'
 #' @return history object
-#' @keywords  
 #' @importFrom methods slot as 
 #' @importFrom tibble tibble 
 #' @importFrom git2r commits
@@ -11,7 +10,7 @@
 #' 
 #' @export
 
-history <- function ( ) {
+history <- function () {
 
   repo <- get_repo()
   #repo <- git2r::repository(getwd())
