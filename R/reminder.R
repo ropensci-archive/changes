@@ -2,12 +2,10 @@
 #'
 #' TODO: Describe this better.
 #'
-#' @param minutes Delay in minutes
+#' @param minutes delay in minutes
 #'
-#' @return NULL
+#' @return nothing
 #' @export
-#'
-#' @examples TODO
 reminder_delay <- function(minutes) {
   assertCount(minutes)
   # convert minutes to seconds of reminder delay, store in .cache environment
@@ -26,12 +24,8 @@ reminder_delay <- function(minutes) {
 #'
 #' TODO: This needs to be called at the tope of every stow function, as well as in the .onLoad of the package
 #'
-#' @param 
-#'
-#' @return NULL
+#' @return nothing
 #' @export
-#'
-#' @examples TODO
 schedule_reminder <- function() {
   # get the reminder delay from the .cache environment
   delay <- NULL
@@ -45,12 +39,8 @@ schedule_reminder <- function() {
 
 #' Show a reminder message
 #'
-#' @param 
-#'
-#' @return NULL
+#' @return nothing
 #' @export
-#'
-#' @examples TODO
 show_reminder <- function() {
   n_changes <- changes(silent=TRUE)
   if (n_changes) {
