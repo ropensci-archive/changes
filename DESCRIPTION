@@ -3,7 +3,7 @@ Title: A simple interface and workflow for version control in R (implemented usi
 Version: 0.0.0.1
 Authors@R: c(
     person("Nick", "Golding", , "nick.golding.research@gmail.com", c("aut", "cre")),
-    person("Diego", "Barneche", , "barnechedr@gmail.com", c("aut")),
+    person("Diego", "Barneche", , "", c("aut")),
     person("Tim", "Churches", , "", c("aut")),
     person("Daniel", "Falster", , "", c("aut")),
     person("Anikó", "Tóth", , "", c("aut")),
@@ -30,5 +30,4 @@ Suggests:
    knitr,
    rmarkdown
 VignetteBuilder: knitr
-Encoding: UTF-8
 RoxygenNote: 6.0.1
