@@ -43,10 +43,6 @@ create_repo <- function (path = getwd(), add_structure = TRUE, change_wd = TRUE,
                 ".gitignore")
   }
 
-  # set the reminders delay and schedule the first reminder
-  reminder_delay(reminder_delay)
-  schedule_reminder()
-  
   # initial commit
   # TODO: Call here to changes function to make first snapshot
 
