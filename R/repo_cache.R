@@ -13,6 +13,7 @@
 #' @importFrom git2r discover_repository repository
 #'
 #' @examples
+
 get_repo <- function () {
   
   # see where we are
