@@ -61,7 +61,8 @@ show_reminder <- function() {
     }      
     message(msg)
     changes()
-    # message(print(statquotes::statquote()))
+    quote_df <- as.data.frame(statquotes::statquote())
+    message(paste("\n",quote_df$text,"\n--- ",quote_df$source, "\n", sep=""))
   }
   # reschedule the reminder
   schedule_reminder()
