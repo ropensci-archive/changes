@@ -25,11 +25,12 @@ record <- function(message)
     answer <- readLines(n = 1, warn = FALSE)
     if (!any(c("y", "ye", "yes") %in% tolower(answer)))
       return()
-    
-    # git2r::stash()
-    # sha <-  "TODO"
-    # retrieve(sha)
-    stop("Not implemented yet for the case where we're not at master.")
+   
+    # TODO Can we do this without system? 
+    call_system("git", "stash")
+    sha <-  "TODO"
+    retrieve(sha)
+    call_system("git", "stash pop")
   }
 
   # Stage unstaged changes
