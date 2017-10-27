@@ -4,6 +4,8 @@
 #'
 #' @param sha The snapshot to go to.
 #'
+#' @importFrom git2r commits checkout
+#' 
 #' @return TODO
 #' @export
 go_to <- function(sha)
