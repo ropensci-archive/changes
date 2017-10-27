@@ -4,7 +4,7 @@ Version: 0.0.0.1
 Authors@R: c(
     person("Nick", "Golding", , "nick.golding.research@gmail.com", c("aut", "cre")),
     person("Diego", "Barneche", , "barnechedr@gmail.com", c("aut")),
-    person("Tim", "Churches", , "tim.churches@gmail.com", c("aut")),
+    person("Tim", "Churches", , "", c("aut")),
     person("Daniel", "Falster", , "", c("aut")),
     person("Anikó", "Tóth", , "", c("aut")),
     person("Damjan", "Vukcevic", , "damjan@vukcevic.net", c("aut")),
@@ -20,7 +20,9 @@ LazyData: true
 Imports:
 	git2r (>= 0.19.0),
 	later (>= 0.5),
-  githug
+  githug,
+  checkmate,
+  statquotes
 Remotes: jennybc/githug
 Suggests: 
 	 testthat,
