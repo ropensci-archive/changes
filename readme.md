@@ -22,7 +22,7 @@ create_repo("~/Desktop/myproject")
 #Download an existing repository from online
 download_repo("url")
 ```
-  [insert picture depicting a conceptual repository here]
+  ![](README_files/Repo_cartoon.png)
   
 2. Make some changes: work on your project as normal. Don't forget to save your changes. 
   [insert picture/code here]
