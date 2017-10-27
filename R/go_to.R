@@ -13,7 +13,7 @@ go_to <- function(sha)
   commits   <- git2r::commits(repo)
   shas      <- vapply(commits, function(x) x@sha, character(1))
   
-  if (!sha %in shas) {
+  if (!sha %in% shas) {
     stop("The provided sha is not found.")
   }
   
