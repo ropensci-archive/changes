@@ -4,14 +4,14 @@
 \alias{create_repo}
 \title{Create a Repository for Version Control}
 \usage{
-create_repo(path = getwd(), add_dirs = TRUE, change_dir = TRUE)
+create_repo(path = getwd(), add_structure = TRUE, change_wd = TRUE)
 }
 \arguments{
 \item{path}{TODO}
 
-\item{add_dirs}{TODO}
+\item{add_structure}{TODO}
 
-\item{change_dir}{TODO}
+\item{change_wd}{TODO}
 }
 \description{
 TODO: Describe this better.
