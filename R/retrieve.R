@@ -22,17 +22,17 @@ retrieve <- function(sha, files = NULL) {
   timestamp <- gsub("[^0-9]", "", Sys.time())
   commits   <- git2r::commits(repo)
   shas      <- vapply(commits, `@`, character(1), "sha")
-  index     <- which(sha == shas)
+  index     <- which(sha == shas) - 2
 
-  if (length(index) == 0) {
+  if (length(index) < 0) {
     stop("Can not find corresponding record.")
   }
 
-
-  git2r::checkout(commits[[index[1]]], branch = timestamp, create = TRUE)
-  git2r::checkout(branch = "master")
+  commit_range <- sprintf("master^%d..master", index)
+  
+  # TODO make this work using git2r, and don't do system calls.
+  call_system("git", c("revert", "--no-commit", commit_range))
 
   msg <- sprintf("Retrieving previous state from sha: %s", sha)
-  branch <- git2r::branches()[[timestamp]]
-  git2r::merge(branch, `--strategy-option` = "theirs", `-m` = msg)
+  git2r::commit(repo, message = msg)
 }
