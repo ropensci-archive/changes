@@ -5,6 +5,7 @@
 #' @param minutes delay in minutes
 #'
 #' @return nothing
+#' @importFrom checkmate assertCount
 #' @export
 reminder_delay <- function(minutes) {
   assertCount(minutes)
