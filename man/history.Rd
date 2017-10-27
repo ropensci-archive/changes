@@ -12,7 +12,3 @@ history object
 \description{
 This function shows the history of records made.
 }
-\examples{
-
-}
-\keyword{}

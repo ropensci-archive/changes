@@ -3,11 +3,8 @@
 #' This function shows the history of records made. 
 #'
 #' @return history object
-#' @keywords  
 #' @import git2r purrr
 #' @importFrom methods slot as
-#' This script borrows from the 'githug' package: https://github.com/jennybc/githug
-#' @examples
 #' 
 #' @export
 
