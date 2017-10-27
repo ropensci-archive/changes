@@ -42,8 +42,8 @@ changes <- function (files = NULL, silent = FALSE) {
   
   headline <- paste_num(nrow(changed),
                         "file",
-                        "changed since the last record()/git commmit:\n\n",
-                        fallback = "no changes since the last record()/git commit")
+                        "changed since the last record\n\n",
+                        fallback = "no changes since the last record")
   
   if (nrow(changed) > 0) {
     
