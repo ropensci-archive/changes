@@ -1,4 +1,4 @@
-# simpler version control from R
+# Simpler version control from R
 
 ## What does stow do?
 
@@ -13,7 +13,6 @@ Four easy steps to success!
 
 1. Start a new repository (or download an existing one). 
 What is a repository, you ask? A repository is a folder in which you store your project. The folder saves previous versions of your project and allows you to easily access them. 
-  For example:
 
 ``` {r}
 #Create a brand new repository in a new or existing local project. Defaults to your current working directory
@@ -51,7 +50,7 @@ commit()
 
 ## Fixing stuff, moving back, recording stuff
 
-5. Look at your history of records
+Look at your history of records
 
 ```{r}
 # print a history of your past records in your console:
@@ -63,7 +62,7 @@ plot(gethistory())
 ```
 
 
-6.  Fixing stuff!
+Fixing stuff!
 
 ```{r}   
 # Made a mistake? Return your project to your last record:
@@ -77,8 +76,8 @@ go_to(recordid)
 
 ```
 
-7. Saving stuff online
-When you work on your computer, you are usually working in what is called the 'local' environment. The local environment encompasses anything housed on your computer's hard drive. If you want to collaborate or make your work available to others, it's a good idea to put it 'in the cloud,' in other words, in a 'remote' repository. These are housed on a server somewhere else in the world, and can be accessed online. This can also provide additional safety in case you lose your work in your local environment. 
+Saving stuff online
+\n When you work on your computer, you are usually working in what is called the 'local' environment. The local environment encompasses anything housed on your computer's hard drive. If you want to collaborate or make your work available to others, it's a good idea to put it 'in the cloud,' in other words, in a 'remote' repository. These are housed on a server somewhere else in the world, and can be accessed online. This can also provide additional safety in case you lose your work in your local environment. 
  
 ```{r}
 # Synchronize your work with a new or existing remote repository
@@ -86,10 +85,30 @@ sync("url")
 ```
    
 
-
 # An example workflow
 
-```{r}
+```{r example}
+setwd("~/Desktop/myproject")
+
+# make a new repository in your working directory
+create_repo()
+
+# tell the repository not to track your large data output files
+ignore("*.csv")
+
+# set reminders to record your changes every 15 minutes (this automatically defaults to 30 minutes)
+reminder_delay(minutes = 15)
+
+# work on you project as normal 
+
+# review your changes. By default it will show all changed files, but you can specify which file to show. 
+changes("myscript.R") 
+
+# record changes, defaults to all changes.
+record()
+
+# continue to work on you project as normal 
+
 
 ```
 
