@@ -11,6 +11,7 @@
 #' @return a git2r repository
 #' @noRd
 #' @importFrom git2r discover_repository repository
+
 get_repo <- function () {
   
   # see where we are

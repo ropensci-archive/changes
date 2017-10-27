@@ -1,5 +1,4 @@
 context("create = git init + project template")
-library(stow)
 
 test_path <- getwd()
 
@@ -11,16 +10,19 @@ test_path <- getwd()
 
 # .git folder with no commits
 
-test_path <- getwd()
+# create repo twice: check for warning messages
 
-test_that("create_repo(): create repo in the same directory as getwd()", {
+test_that("create_repo(): create repo in the same directory as getwd() with correct file structure", {
   path <- tempfile(pattern = "tmpInitFolder-")
   dir.create(path)
+  path <- normalizePath(path)
   setwd(path)
-  create_repo(path, add_structure = TRUE, change_wd = FALSE)
-  git2r::config(repo, user.name = "tmpUser", user.email = "tmpUser@example.com")
-  write(a <- "a", file = file.path(path, "a"))
-  
-  expect_message(changes(), "Untracked files:\n a")
+  expect_message(create_repo(add_structure = TRUE, change_wd = FALSE), paste0("* Initialising git repository in:\n  ", path))
+  expect_equal(getwd(), path)
+  created_files  <-  c(".git/config", ".gitignore", "data/.keep", "data/README.md", "ignore/.keep", "output/.keep", "R/.keep", "R/utils.R", "README.md")
+  for (j in seq_along(created_files)) {
+  	print(paste0(created_files[j], ' exists'))
+  	expect_true(file.exists(created_files[j]))
+  }  
   setwd(test_path)
 })

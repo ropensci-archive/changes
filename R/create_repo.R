@@ -12,7 +12,7 @@ create_repo <- function (path = getwd(), add_structure = TRUE, change_wd = TRUE,
 
   # Create a new repo
   # Possibly want more specific error messages than exist here?
-  githug::git_init(path)
+  init(path)
 
   # record current path
   old_dir <- getwd()
@@ -27,7 +27,7 @@ create_repo <- function (path = getwd(), add_structure = TRUE, change_wd = TRUE,
     folders  <-  c("data", "output", "ignore", "R")
     for (k in seq_along(folders)) {
       dir.create(folders[k], TRUE, FALSE)
-      file.create(file.path(folders[k], '.keep'), TRUE)
+      file_create("", file.path(folders[k], '.keep'))
     }
 
     file_create(c("# About my project", "", "My data is..."), "README.md")
