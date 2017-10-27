@@ -2,7 +2,6 @@
 
 S3method(plot,timeline)
 S3method(print,timeline)
-export(call_system)
 export(changes)
 export(create_repo)
 export(go_to)
