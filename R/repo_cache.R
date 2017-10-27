@@ -1,6 +1,7 @@
 
 # set up a cache
 .cache <- new.env()
+.cache$reminder_delay <- 15
 
 #' get the git repository from the cache
 #'

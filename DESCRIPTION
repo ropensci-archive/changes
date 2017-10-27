@@ -3,7 +3,7 @@ Title: A simple interface and workflow for version control in R (implemented usi
 Version: 0.0.0.1
 Authors@R: c(
     person("Nick", "Golding", , "nick.golding.research@gmail.com", c("aut", "cre")),
-    person("Diego", "Barneche", , "barnechedr@gmail.com", c("aut")),
+    person("Diego", "Barneche", , "", c("aut")),
     person("Tim", "Churches", , "", c("aut")),
     person("Daniel", "Falster", , "", c("aut")),
     person("Anikó", "Tóth", , "", c("aut")),
@@ -14,7 +14,7 @@ Authors@R: c(
     )
 Description: This package provides a set of easy-to-use tools for beginners wanting to implement version control via git for their projects.
 Encoding: UTF-8
-Depends: 
+Depends:
 	R (>= 3.2.2)
 License: GPL-2
 LazyData: true
@@ -28,9 +28,11 @@ Imports:
   methods, 
   igraph
 Remotes: jennybc/githug
-Suggests: 
+Suggests:
 	 testthat,
    knitr,
    rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
+URL: https://github.com/ropenscilabs/ozrepro
+BugReports: https://github.com/ropenscilabs/ozrepro/issues

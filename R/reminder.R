@@ -5,7 +5,8 @@
 #' @param minutes delay in minutes
 #'
 #' @return nothing
-#' @export
+#' @importFrom checkmate assertCount
+#' @noRd
 reminder_delay <- function(minutes) {
   assertCount(minutes)
   # convert minutes to seconds of reminder delay, store in .cache environment
@@ -25,7 +26,7 @@ reminder_delay <- function(minutes) {
 #' TODO: This needs to be called at the tope of every stow function, as well as in the .onLoad of the package
 #'
 #' @return nothing
-#' @export
+#' @noRd
 schedule_reminder <- function() {
   # get the reminder delay from the .cache environment
   delay <- NULL
@@ -40,7 +41,8 @@ schedule_reminder <- function() {
 #' Show a reminder message
 #'
 #' @return nothing
-#' @export
+#' @noRd
+#' @importFrom statquotes statquote
 show_reminder <- function() {
   n_changes <- changes(silent=TRUE)
   if (n_changes) {

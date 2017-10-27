@@ -7,3 +7,4 @@
 *.rds
 *~$*
 .Rproj.user
+inst/doc
