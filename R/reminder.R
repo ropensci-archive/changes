@@ -6,7 +6,7 @@
 #'
 #' @return nothing
 #' @importFrom checkmate assertCount
-#' @noRd
+#' @export
 reminder_delay <- function(minutes) {
   assertCount(minutes)
   # convert minutes to seconds of reminder delay, store in .cache environment
