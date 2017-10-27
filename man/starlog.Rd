@@ -6,9 +6,7 @@
 \usage{
 starlog()
 }
-\value{
-nothing
-}
 \description{
-TODO: Describe this better.
+Display your past record messages at starlogs.net. This requires internet
+access and only works for version control projects that have an online copy
 }
