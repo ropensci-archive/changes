@@ -59,7 +59,6 @@ get_repo <- function () {
   stage_all(repo)
     
   # set the reminders delay and schedule the first reminder
-  reminder_delay(reminder_delay)
   schedule_reminder()
   
   # return the object

@@ -11,10 +11,11 @@
 #' @return TODO
 #' @export
 retrieve <- function(sha, files = NULL) {
-  repo <- stow:::get_repo()
+  
+  repo <- get_repo()
 
   # TODO scrub the existing changes.
-  if (!stow:::is_clean(repo)) {
+  if (!is_clean(repo)) {
     stop("You need to record or scrub before you ",
          "can retrieve when there are changes.")
   }

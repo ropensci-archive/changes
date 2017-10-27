@@ -10,6 +10,9 @@
 #' @export
 go_to <- function(sha)
 {
+  
+  repo <- get_repo()
+  
   shas <- get_shas(repo, nchar(sha))
   
   if (!sha %in% shas) {
@@ -17,4 +20,5 @@ go_to <- function(sha)
   }
   
   call_system("git", c("checkout", sha))
+  
 }

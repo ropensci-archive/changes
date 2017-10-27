@@ -22,8 +22,6 @@ Imports:
 	git2r (>= 0.19.0),
 	later (>= 0.5),
   githug,
-  checkmate,
-  statquotes, 
   tibble,
   methods, 
   igraph

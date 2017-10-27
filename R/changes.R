@@ -63,7 +63,7 @@ changes <- function (files = NULL, silent = FALSE) {
   }
   
   if (!silent) message(headline, line_changes)
-  invisible (NULL)
+  invisible (length(line_changes))
   
 }
 
