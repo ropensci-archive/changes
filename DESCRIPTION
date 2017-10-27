@@ -23,7 +23,8 @@ Imports:
 	later (>= 0.5),
   githug,
   checkmate,
-  statquotes
+  statquotes,
+  purrr
 Remotes: jennybc/githug
 Suggests: 
 	 testthat,
