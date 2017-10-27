@@ -21,7 +21,7 @@ retrieve <- function(sha, files = NULL) {
 
   timestamp <- gsub("[^0-9]", "", Sys.time())
   commits   <- git2r::commits(repo)
-  shas      <- vapply(commits, `@`, character(1), "sha")
+  shas      <- vapply(commits, function(x) x@sha, character(1))
   index     <- which(sha == shas) - 2
 
   if (length(index) < 0) {
