@@ -4,17 +4,17 @@
 #'
 #' @return history object
 #' @keywords  
-#' @import git2r purrr
-#' @importFrom methods slot as
-#' This script borrows from the 'githug' package: https://github.com/jennybc/githug
+#' @importFrom methods slot as 
+#' @importFrom tibble tibble 
+#' @importFrom git2r commits
 #' @examples
 #' 
 #' @export
 
 history <- function ( ) {
 
-  #repo <- get_repo()
-  repo <- git2r::repository(getwd())
+  repo <- get_repo()
+  #repo <- git2r::repository(getwd())
   records <- git2r::commits(repo)
   
   if (length(records) == 0) {
@@ -22,14 +22,14 @@ history <- function ( ) {
   }
   
   record_id <- as.list(seq(length(records), 1, length.out = length(records)))
-  raw_author <- purrr::map(records, methods::slot, "author")
-  author <- purrr::map(raw_author, methods::slot, 'name')
-  when <- purrr::map(raw_author, methods::slot, "when")
-  when <- purrr::map(when, ~ methods::as(.x, "POSIXct"))
+  raw_author <- lapply(records, methods::slot, 'author')
+  author <- lapply(raw_author, methods::slot, 'name')
+  when <- lapply(raw_author, methods::slot, 'when')
+  when <- lapply(when, methods::as, 'POSIXct')
   when <- do.call(c, when)
-  email <- purrr::map_chr(raw_author, methods::slot, "email")
-  message <- purrr::map_chr(records, methods::slot, "message")
-  sha <- purrr::map_chr(records, methods::slot, "sha")
+  email <- lapply(raw_author, methods::slot, 'email')
+  message <- lapply(records, methods::slot, 'message')
+  sha <- lapply(records, methods::slot, 'sha')
   
   log <- tibble::tibble(record_id, author, when, email, message, sha)
   
