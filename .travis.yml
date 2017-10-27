@@ -1,0 +1,17 @@
+language: 
+  - R
+
+cache: 
+  - packages
+  
+sudo:
+  - required
+
+warnings_are_errors: 
+  - true
+
+before_install:
+  - chmod 755 ./travis-tool/travis_timeout.sh
+
+script: 
+  - ./travis-tool/travis_timeout.sh travis_wait
