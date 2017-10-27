@@ -9,6 +9,7 @@
 #' @return plot
 #' @method plot timeline
 #' @importFrom igraph graph_from_literal
+#' @importFrom graphics plot
 #'
 #' @export
 

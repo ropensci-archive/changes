@@ -89,6 +89,7 @@ Sys_which <- function(x) {
 ##' to \code{FALSE} to avoid capturing output from that stream.  Setting
 ##' both to \code{FALSE} is not recommended.
 ##' @export
+##' @importFrom utils head tail
 ##' @author Rich FitzJohn
 call_system <- function(command, args, env=character(), max_lines=20,
                         p=0.8, stdout=TRUE, stderr=TRUE) {
