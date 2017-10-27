@@ -55,10 +55,7 @@ commit()
 
 ```{ eval=FALSE}
 # print a history of your past records in your console:
-print(gethistory())
-
-# ...or depict it in an [interactive?] plot!
-plot(gethistory())
+timeline()
 
 ```
 
@@ -107,7 +104,7 @@ reminder_delay(minutes = 15)
 changes("myscript.R") 
 
 # record changes, defaults to all changes.
-record()
+record(message="Added a new analysis to myscript.R")
 
 # continue to work on you project as normal 
 
@@ -118,5 +115,7 @@ record()
 # Remove the changes you have made since your last commit 
 scrub()
 
+# Look at your history of commits
+timeline()
 
 ```
