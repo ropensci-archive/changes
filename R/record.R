@@ -22,9 +22,11 @@ record <- function(message)
     answer <- readLines(n = 1, warn = FALSE)
     if (!any(c("y", "ye", "yes") %in% tolower(answer)))
       return()
-
-    timestamp <- gsub("[^0-9]", "", Sys.time())
-    git2r::checkout(repo, branch = timestamp, create = TRUE)
+    
+    # git2r::stash()
+    # sha <-  "TODO"
+    # retrieve(sha)
+    stop("Not implemented yet for the case where we're not at master.")
   }
 
   # Stage unstaged changes
