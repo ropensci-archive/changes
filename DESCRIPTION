@@ -13,6 +13,7 @@ Authors@R: c(
     person("Charles", "Gray", , "", c("aut"))
     )
 Description: This package provides a set of easy-to-use tools for beginners wanting to implement version control via git for their projects
+Encoding: UTF-8
 Depends: 
 	R (>= 3.2.2)
 License: GPL-2
