@@ -11,10 +11,10 @@
 #' @return TODO
 #' @export
 retrieve <- function(sha, files = NULL) {
-  repo <- get_repo()
+  repo <- stow:::get_repo()
 
   # TODO scrub the existing changes.
-  if (!is_clean(repo)) {
+  if (!stow:::is_clean(repo)) {
     stop("You need to record or scrub before you ",
          "can retrieve when there are changes.")
   }
@@ -22,14 +22,16 @@ retrieve <- function(sha, files = NULL) {
   timestamp <- gsub("[^0-9]", "", Sys.time())
   commits   <- git2r::commits(repo)
   shas      <- vapply(commits, function(x) x@sha, character(1))
-  index     <- which(sha == shas) - 2
+  index     <- which(sha == shas) - 1
 
-  if (length(index) < 0) {
+  if (index < 0) {
     stop("Can not find corresponding record.")
+  } else if (index == 1) {
+    commit_range <- "master"
+  } else {
+    commit_range <- sprintf("master~%d..master", index)
   }
 
-  commit_range <- sprintf("master^%d..master", index)
-  
   # TODO make this work using git2r, and don't do system calls.
   call_system("git", c("revert", "--no-commit", commit_range))
 
