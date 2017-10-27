@@ -1,7 +1,7 @@
 ---
 title: "Get Started!"
 author: "Damjan and Anikó"
-date: "`r Sys.Date()`"
+date: "Today"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
