@@ -4,10 +4,10 @@
 \alias{go_to}
 \title{Go to a Specified Snapshot in the Version Control Timeline}
 \usage{
-go_to(where)
+go_to(sha)
 }
 \arguments{
-\item{where}{The snapshot to go to.}
+\item{sha}{The snapshot to go to.}
 }
 \value{
 TODO
