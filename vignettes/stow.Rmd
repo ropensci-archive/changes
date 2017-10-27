@@ -54,8 +54,7 @@ record()
 timeline()
 
 # ...or depict it in a plot!
-plot(timeline())
-
+plot(timeline())  # (not yet implemented)
 ```
 
 
@@ -103,7 +102,7 @@ reminder_delay(minutes = 15)
 changes("myscript.R") 
 
 # record changes, defaults to all changes.
-record()
+record(message="Added a new analysis to myscript.R")
 
 # continue to work on you project as normal 
 
@@ -111,4 +110,9 @@ record()
 changes("myscript.R")
 record()
 
+# Remove the changes you have made since your last commit 
+scrub()  # (not yet implemented)
+
+# Look at your history of commits
+timeline()
 ```
