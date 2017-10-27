@@ -4,10 +4,11 @@
 #'
 #' @param files an optional character vector of files for which you want to see
 #'   the changes
+#' @param silent if TRUE does not issue a message
 #'
-#' @return TODO
+#' @return number of changes
 #' @export
-changes <- function (files = NULL) { 
+changes <- function (files = NULL, silent = FALSE) { 
   
   repo <- get_repo()
   
@@ -41,8 +42,8 @@ changes <- function (files = NULL) {
   
   headline <- paste_num(nrow(changed),
                         "file",
-                        "changed since the last commit:\n\n",
-                        fallback = "no changes since the last commit")
+                        "changed since the last record()/git commmit:\n\n",
+                        fallback = "no changes since the last record()/git commit")
   
   if (nrow(changed) > 0) {
     
@@ -61,8 +62,8 @@ changes <- function (files = NULL) {
     
   }
   
-  message(headline, line_changes)
-  
+  if (!silent) message(headline, line_changes)
+  return(nrow(changed))
 }
 
 # format the line changes for each modified file
