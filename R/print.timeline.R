@@ -29,15 +29,18 @@ print.timeline <- function (x, ...) {
     
     msg <- gsub("\\n+", ": ", commit$message)
     sha <- substr(commit$sha, 1, 7)
+    datetime <- format(commit$when, format = "%Y-%m-%d %H:%M")
     
-    if (i == 1)
-      pipe <- " "
+    # don't use the pipe for the last one, and pad by the width of the number
+    pipe <- ifelse(i == 1, " ", "|")
+    pad <- nchar(commit$record_id) - 1
+    pipe <- paste0(pipe, rep(" ", pad))
     
     string <- sprintf(template,
                       commit$record_id,
                       msg,
                       pipe,
-                      commit$when,
+                      datetime,
                       sha,
                       pipe)
     cat(string)
