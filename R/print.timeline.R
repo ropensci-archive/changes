@@ -18,9 +18,9 @@ print.timeline <- function (x, ...) {
   # how much to pad the integers
   
   
-  template <- "   (%i) %s\n    %s  %s [%s]\n    %s\n"
+  template <- "   (%i) %s\n    %s  %s\n    %s\n"
   #    (<record_id>) <message>
-  #    <pipe> <datetime> [<sha>]
+  #    <pipe> <datetime>
   #    <pipe>
   pipe <- "|"
   for (i in order) {
@@ -41,7 +41,6 @@ print.timeline <- function (x, ...) {
                       msg,
                       pipe,
                       datetime,
-                      sha,
                       pipe)
     cat(string)
     
