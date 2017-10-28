@@ -38,8 +38,17 @@ record <- function (message) {
 
   # Stage unstaged changes
   git2r::add(repo, "*")
-
-  capture.output(git2r::commit(repo, message = message))
+  
+  # see if there's anything to commit
+  any_unstaged <- nrow(diff_df(repo, staged = FALSE)) > 0
+  any_staged <- nrow(diff_df(repo, staged = TRUE)) > 0
+  
+  if (any_staged | any_unstaged) {
+    capture.output(git2r::commit(repo, message = message))
+  } else {
+    message ("no files have changed since your last record, ",
+             "there's nothing to commit")
+  }
   
   invisible(NULL)
   
