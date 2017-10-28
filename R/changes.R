@@ -32,7 +32,7 @@ changes <- function (files = NULL, silent = FALSE) {
             call. = FALSE)
     }
     
-    repo_path <- dirname(repo@path)
+    repo_path <- repo@path
     files <- gsub(file.path(repo_path, ""),
                   "", files)
     
