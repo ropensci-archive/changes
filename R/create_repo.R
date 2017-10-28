@@ -38,12 +38,10 @@ create_repo <- function (path = getwd(), add_structure = TRUE, change_wd = TRUE,
                   ".DS_Store", "*.Rapp.history", "*.Rhistory",
                   "*.RData", "*tmp*", "*.rda", "*.rds", "*~$*",
                   ".Rproj.user", "ehthumbs.db", "Icon?",
-                  "Thumbs.db",
-                  "ignore", "output"),
+                  "Thumbs.db", "ignore", "output", ".gitignore"),
                 ".gitignore")
   }
 
-  # initial commit
-  # TODO: Call here to changes function to make first snapshot
+  record("set up project")
 
 }

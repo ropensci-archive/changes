@@ -24,9 +24,17 @@ ignore <- function (files) {
   entries <- c(entries, files)
   writeLines(entries, gitignore)
   
-  # do git rm --cached on these files
-  call_system("git", c("rm --cached", files))
+  # if any of these files are being tracked, do git rm --cached on them
+  tracked <- vapply(files, is_tracked, FUN.VALUE = FALSE)
+  if (any(tracked)) {
+    call_system("git", c("rm --cached", files[tracked]))
+  }
   
+}
+
+is_tracked <- function (file) {
+  path <- call_system("git", c("ls-files", file))
+  some(path)
 }
 
 #' @rdname ignore
