@@ -1,4 +1,4 @@
-# simpler, easier version control from R
+# simpler version control from R
 
 [![build status](https://travis-ci.org/ropenscilabs/ozrepro.svg?branch=master)](https://travis-ci.org/ropenscilabs/ozrepro)
 

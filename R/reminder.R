@@ -45,10 +45,14 @@ schedule_reminder <- function() {
 show_reminder <- function() {
   n_changes <- changes(silent=TRUE)
   if (n_changes) {
-    msg <- c(paste("Hey, there are", n_changes, "files that"),
-                   "have changed since you last commited them to git!",
-                   "You should run record() to commit them.")
-    notify(msg, title="A reminder from stow")
+    if (n_changes < 2) {
+      msg <- c(paste("Hey, there is", n_changes, "file that"),
+                     "has changed since your last commit to git!")
+    } else {
+      msg <- c(paste("Hey, there are", n_changes, "files that"),
+                     "have changed since your last commit to git!")
+    }  
+    notify(msg, title="A gentle reminder from stow")
   }
   # No need to reschedule the reminder, at least on macOS, it is persistent
   # schedule_reminder()
