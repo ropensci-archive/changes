@@ -27,7 +27,6 @@ reminder_delay <- function(minutes) {
 #' TODO: This needs to be called at the tope of every stow function, as well as in the .onLoad of the package
 #'
 #' @return nothing
-#' @export
 schedule_reminder <- function() {
   # get the reminder delay from the .cache environment
   delay <- NULL
