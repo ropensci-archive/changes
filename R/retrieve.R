@@ -1,23 +1,22 @@
-#' Retrieve code from a past commit.
-#'
-#' If the argument files is NULL will reteive state of entire repo
+#' Retrieve code from a past record
 #'
 #' TODO Describe this better.
-#' @param sha The sha to retrieve
-#' @param files vector or list files to retrive TODO: add this
+#' 
+#' @param number the record number to retrieve
 #'
 #' @importFrom git2r checkout commits
 #'
-#' @return TODO
 #' @export
-retrieve <- function(sha, files = NULL) {
+retrieve <- function (number) {
   
   repo <- get_repo()
+  
+  sha <- number_to_sha(repo, number)
 
-  # TODO scrub the existing changes.
   if (!is_clean(repo)) {
-    stop("You need to record or scrub before you ",
-         "can retrieve when there are changes.")
+    stop ("there are some changes that haven't been recorded, ",
+         "you need to record (or scrub) them before you can retrieve ",
+         "a past record.", call. = FALSE)
   }
 
   timestamp <- gsub("[^0-9]", "", Sys.time())
@@ -36,6 +35,6 @@ retrieve <- function(sha, files = NULL) {
   # TODO make this work using git2r, and don't do system calls.
   call_system("git", c("revert", "--no-commit", commit_range))
 
-  msg <- sprintf("Retrieving previous state from sha: %s", sha)
+  msg <- sprintf("Retrieving previous state from record %i", number)
   git2r::commit(repo, message = msg)
 }

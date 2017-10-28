@@ -2,15 +2,12 @@
 % Please edit documentation in R/go_to.R
 \name{go_to}
 \alias{go_to}
-\title{Go to a Specified Snapshot in the Version Control Timeline}
+\title{Go to a Specified Record in the Version Control Timeline}
 \usage{
-go_to(sha)
+go_to(number)
 }
 \arguments{
-\item{sha}{The snapshot to go to.}
-}
-\value{
-TODO
+\item{number}{the record number to go to}
 }
 \description{
 TODO Describe this better.
