@@ -21,7 +21,6 @@ LazyData: true
 Imports:
 	git2r (>= 0.19.0),
 	later (>= 0.5),
-  tibble,
   methods, 
   igraph
 Suggests:
