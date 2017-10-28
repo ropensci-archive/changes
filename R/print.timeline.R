@@ -15,14 +15,11 @@ print.timeline <- function (x, ...) {
   n_commits <- nrow(x)
   order <- rev(seq_len(n_commits))
   
-  # how much to pad the integers
-  
-  
   template <- "   (%i) %s\n    %s  %s\n    %s\n"
   #    (<record_id>) <message>
   #    <pipe> <datetime>
   #    <pipe>
-  pipe <- "|"
+  
   for (i in order) {
     
     commit <- x[i, ]
@@ -44,6 +41,16 @@ print.timeline <- function (x, ...) {
                       pipe)
     cat(string)
     
+  }
+  
+  repo <- attr(x, "repo")
+  n_total <- number_of_commits(repo, "total")
+  
+  if (n_commits < n_total) {
+    n_future <- number_of_commits(repo, "future")
+    cat(sprintf("   ...plus %i future records (%i in total)\n",
+                n_future,
+                n_total))
   }
   
 }

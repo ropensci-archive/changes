@@ -10,9 +10,7 @@
 #' @noRd
 number_to_sha <- function (repo, number) {
   
-  records <- git2r::commits(repo)
-  
-  n_records <- length(records)
+  n_records <- number_of_commits(repo, "total")
   
   if (!number %in% seq_len(n_records)) {
     stop("the records are numbered 1-", n_records,
@@ -21,7 +19,7 @@ number_to_sha <- function (repo, number) {
   }
   
   # count back from n_records
-  reference <- paste0("HEAD~", n_records - number)
+  reference <- paste0("master~", n_records - number)
   commit <- git2r::revparse_single(repo, reference)
   commit@sha
   

@@ -28,7 +28,10 @@ timeline <- function () {
   
   log <- data.frame(record_id, author, when, email, message, sha)
   
-  structure(log, class = c('timeline', class(log)))
-  
+  class(log) <- c('timeline', class(log))
+  attr(log, "repo") <- repo
+  log
+
+    
 }
 
