@@ -10,7 +10,8 @@
 reminder_delay <- function(minutes) {
   assertCount(minutes)
   # convert minutes to seconds of reminder delay, store in .cache environment
-  .cache[["reminder_delay"]] <- minutes*60
+  secs_delay <- minutes * 60
+  .cache[["reminder_delay"]] <- secs_delay
   if (minutes < 1) {
     msg <- "Reminders disabled"
   } else {
@@ -26,12 +27,12 @@ reminder_delay <- function(minutes) {
 #' TODO: This needs to be called at the tope of every stow function, as well as in the .onLoad of the package
 #'
 #' @return nothing
-#' @noRd
+#' @export
 schedule_reminder <- function() {
   # get the reminder delay from the .cache environment
   delay <- NULL
   delay <- .cache$reminder_delay
-  if (is.null(delay)) delay <= 60*30
+  if (is.null(delay)) delay <- 60*30
   if (delay > 0) {
     later::later(function() { show_reminder() }, delay=delay)
   }
@@ -41,23 +42,17 @@ schedule_reminder <- function() {
 #' Show a reminder message
 #'
 #' @return nothing
-#' @noRd
-#' @importFrom statquotes statquote
+#' @importFrom notifier notify
 show_reminder <- function() {
   n_changes <- changes(silent=TRUE)
   if (n_changes) {
-    if (n_changes < 4) {
-      msg <- "\nHey, it's been a while since you record()ed your changes..\n"
-    } else {
-      msg <- "\nHey, there are a shedload of changes which you should record()!\n"
-    }      
-    message(msg)
-    changes()
-    quote_df <- as.data.frame(statquotes::statquote())
-    message(paste("\n",quote_df$text,"\n--- ",quote_df$source, "\n", sep=""))
+    msg <- c(paste("Hey, there are", n_changes, "files that"),
+                   "have changed since you last commited them to git!",
+                   "You should run record() to commit them.")
+    notify(msg, title="A reminder from stow")
   }
-  # reschedule the reminder
-  schedule_reminder()
+  # No need to reschedule the reminder, at least on macOS, it is persistent
+  # schedule_reminder()
   # return nothing
   invisible(NULL)
 }

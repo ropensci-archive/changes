@@ -62,9 +62,12 @@ changes <- function (files = NULL, silent = FALSE) {
     
   }
   
-  if (!silent) message(headline, line_changes)
-  invisible (NULL)
-  
+  if (!silent) {
+    message(headline, line_changes)
+    invisible (NULL)
+  } else {
+    return(nrow(changed))
+  }
 }
 
 # format the line changes for each modified file

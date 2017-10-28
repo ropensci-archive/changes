@@ -23,11 +23,13 @@ Imports:
 	later (>= 0.5),
   githug,
   checkmate,
-  statquotes, 
   tibble,
   methods, 
-  igraph
-Remotes: jennybc/githug
+  igraph,
+  notifier
+Remotes: 
+  jennybc/githug,
+  gaborcsardi/notifier
 Suggests:
 	 testthat,
    knitr,
