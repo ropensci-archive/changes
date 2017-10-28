@@ -29,7 +29,8 @@ record <- function (message) {
     
     sha <- git2r::commits()[[1]]@sha
     retrieve(sha)
-    git2r::stash_drop(repo)  # call_system("git", "stash pop")
+    # git2r::stash_drop(repo) 
+    call_system("git", "stash pop")
   }
   
   # check the message
