@@ -14,7 +14,7 @@ record <- function (message) {
   
   repo <- get_repo()
 
-  if (!head_at_master()) {
+  if (!head_at_master(repo)) {
     
     # We are in detached head state...
     # commit the diffs to master->head  on top and linearize.
