@@ -39,6 +39,9 @@ record <- function (message) {
   # Stage unstaged changes
   git2r::add(repo, "*")
 
-  git2r::commit(repo, message = message)
+  capture.output(git2r::commit(repo, message = message))
+  
+  invisible(NULL)
+  
 }
 
