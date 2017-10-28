@@ -14,12 +14,11 @@ Stow uses git under the hood. Git is a popular version control system used by pr
 
 # Installation
 
-This package depends on the [githug](https://github.com/jennybc/githug) package. You can install githug and then stow from github with:
+stow can be installed from github:
 
 ```
-# install.packages("devtools")
-devtools::install_github("jennybc/githug")
-devtools::install_github("ropenscilabs/ozrepro")
+# install.packages("remotes")
+remotes::install_github("ropenscilabs/ozrepro")
 ```
 
 Go to the website for more details! [https://ropenscilabs.github.io/ozrepro/]()
