@@ -19,6 +19,7 @@ go_to <- function(sha)
     stop("The provided sha is not found.")
   }
   
-  call_system("git", c("checkout", sha))
+  commit <- git2r::revparse_single(repo, sha)
+  git2r::checkout(commit)  # call_system("git", c("checkout", sha))
   
 }

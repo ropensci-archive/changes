@@ -22,14 +22,14 @@ record <- function (message) {
     cat("Do you want to add your changes and make this the latest version? [Yes/No]? ")
     answer <- readLines(n = 1, warn = FALSE)
     if (!any(c("y", "ye", "yes") %in% tolower(answer)))
-      return()
+      return ()
     
-    call_system("git", "stash")
+    git2r::stash(repo)  # call_system("git", "stash")
     git2r::checkout(repo, "master")
     
     sha <- git2r::commits()[[1]]@sha
     retrieve(sha)
-    call_system("git", "stash pop")
+    git2r::stash_drop(repo)  # call_system("git", "stash pop")
   }
   
   # check the message
