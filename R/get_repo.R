@@ -1,8 +1,3 @@
-
-# set up a cache
-.cache <- new.env()
-.cache$reminder_delay <- 60 # default to hourly notifications
-
 #' get the git repository from the cache
 #'
 #' @details if no repo is in the cache, this function will try to instantiate
