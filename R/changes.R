@@ -63,7 +63,7 @@ changes <- function (files = NULL, silent = FALSE) {
   }
   
   if (!silent) {
-    message(headline, line_changes)
+    cat (headline, line_changes)
     return (invisible(NULL))
   } else {
     return (nrow(changed))
