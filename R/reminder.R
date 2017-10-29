@@ -20,9 +20,9 @@ remind_me <- function(after = 60) {
   .cache[["reminder_delay"]] <- minutes
   
   if (minutes < 1) {
-    msg <- "Reminders disabled"
+    msg <- "reminders disabled"
   } else {
-    msg <- paste("Reminders set for", minutes, "minutes")
+    msg <- paste("reminders set for", minutes, "minutes")
   }
   
   cat(msg) 
@@ -40,6 +40,7 @@ schedule_reminder <- function() {
   
   # get the reminder delay from the .cache environment
   delay <- .cache$reminder_delay
+  .cache$reminder_paused <- FALSE
   
   # coerce to seconds here, so we can use minutes elsewhere
   if (delay > 0) {
@@ -57,8 +58,9 @@ schedule_reminder <- function() {
 show_reminder <- function () {
   
   n_changes <- changes(silent = TRUE)
+  paused <- .cache$reminder_paused
   
-  if (n_changes) {
+  if (n_changes & !paused) {
     if (n_changes < 2) {
       msg <- c(paste("Hey, there is", n_changes, "file that"),
                      "has changed since you last recorded your work!")
@@ -66,10 +68,13 @@ show_reminder <- function () {
       msg <- c(paste("Hey, there are", n_changes, "files that"),
                      "have changed since you last recorded your work!")
     }  
+    
     notify(msg, title="A gentle reminder from stow")
+    
+    # pause the reminder, until they use another stow function
+    .cache$reminder_paused <- TRUE
+    
   }
-  
-  # No need to reschedule the reminder, at least on macOS, it is persistent
   
   # return nothing
   invisible (NULL)
