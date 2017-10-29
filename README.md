@@ -95,13 +95,13 @@ timeline()
 ```
 
           (1) initial commit
-           |  2017-10-30 02:41
+           |  2017-10-30 02:43
            |
           (2) set up project structure
-           |  2017-10-30 02:41
+           |  2017-10-30 02:43
            |
           (3) added stuff to readme
-              2017-10-30 02:41
+              2017-10-30 02:43
        
 
 and go back in time to recover the project at any one of those records - all of the files will be changed back to how they were at the time of that record
@@ -112,10 +112,10 @@ timeline()
 ```
 
           (1) initial commit
-           |  2017-10-30 02:41
+           |  2017-10-30 02:43
            |
           (2) set up project structure
-              2017-10-30 02:41
+              2017-10-30 02:43
             
           ...plus 1 future records (3 in total)
 
@@ -133,16 +133,16 @@ timeline()
 ```
 
           (1) initial commit
-           |  2017-10-30 02:41
+           |  2017-10-30 02:43
            |
           (2) set up project structure
-           |  2017-10-30 02:41
+           |  2017-10-30 02:43
            |
           (3) added stuff to readme
-           |  2017-10-30 02:41
+           |  2017-10-30 02:43
            |
           (4) retrieving previous state from record 2
-              2017-10-30 02:41
+              2017-10-30 02:43
        
 
 Installation

@@ -15,7 +15,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-home">
+    <div class="container template-vignette">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -29,16 +29,10 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="articles/stow.html">Get Started</a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="articles/index.html">Articles</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -58,11 +52,15 @@
 
       
       </header><div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9">
     
-<div id="simpler-version-control-from-r" class="section level1">
+
+    
+    
+<div class="contents">
+<div id="stow-simpler-version-control-from-r" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#simpler-version-control-from-r" class="anchor"></a>simpler version control from R</h1></div>
+<a href="#stow-simpler-version-control-from-r" class="anchor"></a>stow: simpler version control from R</h1></div>
 
 <div id="what-does-stow-do" class="section level2">
 <h2 class="hasAnchor">
@@ -70,20 +68,92 @@
 <p>Stow allows beginners with minimal programming experience to use version control. Version control is a framework that saves previous versions of your work as you develop your projects (Like ‘Track changes’ in MS Word). You can then easily look at previous versions, merge changes, and collaborate with others, but without the headache!</p>
 <p>Stow uses git under the hood. Git is a popular version control system used by projects such as Android and ggplot2. Don’t worry, you don’t need to know any git to use stow!</p>
 </div>
+<div id="how-do-i-use-it" class="section level2">
+<h2 class="hasAnchor">
+<a href="#how-do-i-use-it" class="anchor"></a>How do I use it?</h2>
+<p>Here’s a quick demo of how to use stow:</p>
+<p>First, we need to create a new project (we only need to do this the first time we work with the project).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(stow)
+<span class="kw"><a href="reference/create_repo.html">create_repo</a></span>(<span class="st">"~/Desktop/myproject"</span>)</code></pre></div>
+<pre><code>   started version control project at ~/Desktop/myproject</code></pre>
+<pre><code>   reminders set for 60 minutes</code></pre>
+<p>We can tell the repository if there are files (e.g. large data output files) we don’t want to keep records of</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/ignore.html">ignore</a></span>(<span class="st">"output/results.csv"</span>)</code></pre></div>
+<p>and we can always change our minds later.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/ignore.html">unignore</a></span>(<span class="st">"output/results.csv"</span>)</code></pre></div>
+<p>With the project set up, we can work on our project as normal.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># write some words to a file</span>
+<span class="kw">cat</span>(<span class="st">"this is fun!</span><span class="ch">\n</span><span class="st">"</span>, <span class="dt">file =</span> <span class="st">"README.md"</span>, <span class="dt">append =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p>We can then see which files have changed and make a record of the project, with a message to say what we did</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/changes.html">changes</a></span>()</code></pre></div>
+<pre><code>   1 file changed since the last record
+   
+     README.md:   1 line added</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/record.html">record</a></span>(<span class="st">"added stuff to readme"</span>)</code></pre></div>
+<p>Now we can keep working on and adding files in this folder, and recording our changes regularly with <code><a href="reference/record.html">record()</a></code>.</p>
+<p>It’s easy to forget to record, so stow will automatically remind us if we have unrecorded changes and it’s been some time since we last used stow. By default we’ll be reminded after 60 minutes, but we can change that:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/remind_me.html">remind_me</a></span>(<span class="dt">after =</span> <span class="dv">30</span>)</code></pre></div>
+<pre><code>   reminders set for 30 minutes</code></pre>
+<p>If we make a change we don’t want to keep or record, we can undo it and go back to our last record</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cat</span>(<span class="st">"I could do this all day.</span><span class="ch">\n</span><span class="st">"</span>, <span class="dt">file =</span> <span class="st">"README.md"</span>, <span class="dt">append =</span> <span class="ot">TRUE</span>)
+<span class="kw"><a href="reference/changes.html">changes</a></span>()</code></pre></div>
+<pre><code>   1 file changed since the last record
+   
+     README.md:   1 line added</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/scrub.html">scrub</a></span>()
+<span class="kw"><a href="reference/changes.html">changes</a></span>()</code></pre></div>
+<pre><code>   no changes since the last record</code></pre>
+<p>We can look at all the records we’ve made so far</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/timeline.html">timeline</a></span>()</code></pre></div>
+<pre><code>      (1) initial commit
+       |  2017-10-30 02:43
+       |
+      (2) set up project structure
+       |  2017-10-30 02:43
+       |
+      (3) added stuff to readme
+          2017-10-30 02:43
+   </code></pre>
+<p>and go back in time to recover the project at any one of those records - all of the files will be changed back to how they were at the time of that record</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/go_to.html">go_to</a></span>(<span class="dv">2</span>)
+<span class="kw"><a href="reference/timeline.html">timeline</a></span>()</code></pre></div>
+<pre><code>      (1) initial commit
+       |  2017-10-30 02:43
+       |
+      (2) set up project structure
+          2017-10-30 02:43
+        
+      ...plus 1 future records (3 in total)</code></pre>
+<p>but don’t worry, we can always go back to the future to recover our subsequent work.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/go_to.html">go_to</a></span>(<span class="dv">3</span>)</code></pre></div>
+<p>If we want to start again from a previous record, we can bring that record to the end of our timeline. stow will change all of the files to how they were at the time of the record, but all the work we recorded since then will still be stored, just in case we need it later.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/retrieve.html">retrieve</a></span>(<span class="dv">2</span>)
+<span class="kw"><a href="reference/timeline.html">timeline</a></span>()</code></pre></div>
+<pre><code>      (1) initial commit
+       |  2017-10-30 02:43
+       |
+      (2) set up project structure
+       |  2017-10-30 02:43
+       |
+      (3) added stuff to readme
+       |  2017-10-30 02:43
+       |
+      (4) retrieving previous state from record 2
+          2017-10-30 02:43
+   </code></pre>
+</div>
 </div>
 <div id="installation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
-<p>This package depends on the <a href="https://github.com/jennybc/githug">githug</a> package. You can install githug and then stow from github with:</p>
-<pre><code><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github"># install.packages("devtools")
-devtools::install_github("jennybc/githug")
-devtools::install_github("ropenscilabs/ozrepro")</a></code></pre>
-<p>Go to the website for more details! <a href="">https://ropenscilabs.github.io/ozrepro/</a></p>
+<p>stow isn’t on CRAN yet, but it can be installed from github</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("remotes")</span>
+remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"ropenscilabs/ozrepro"</span>)</code></pre></div>
 </div>
-
+</div>
   </div>
 
-  <div class="col-md-3" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Links</h2>
 <ul class="list-unstyled">
 <li>Browse source code at <br><a href="https://github.com/ropenscilabs/ozrepro">https://​github.com/​ropenscilabs/​ozrepro</a>
@@ -110,6 +180,7 @@ devtools::install_github("ropenscilabs/ozrepro")</a></code></pre>
 <li><a href="https://travis-ci.org/ropenscilabs/ozrepro"><img src="https://travis-ci.org/ropenscilabs/ozrepro.svg?branch=master" alt="build status"></a></li>
 </ul>
 </div>
+
 </div>
 
 

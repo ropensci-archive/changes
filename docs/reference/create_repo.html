@@ -23,8 +23,7 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -52,16 +51,10 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../articles/stow.html">Get Started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../articles/index.html">Articles</a>
 </li>
       </ul>
       
@@ -91,7 +84,7 @@
     
 
     <pre class="usage"><span class='fu'>create_repo</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='fu'>getwd</span>(), <span class='kw'>add_structure</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>change_wd</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>reminder_delay</span> <span class='kw'>=</span> <span class='fl'>30</span>)</pre>
+  <span class='kw'>remind_me_after</span> <span class='kw'>=</span> <span class='fl'>60</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -109,10 +102,14 @@
       <td><p>TODO</p></td>
     </tr>
     <tr>
-      <th>reminder_delay</th>
+      <th>remind_me_after</th>
       <td><p>set reminder delay in minutes, zero disables reminders</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>See <code><a href='remind_me.html'>remind_me</a>()</code> for more information on reminders</p>
     
 
   </div>
@@ -120,7 +117,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#details">Details</a></li>
+          </ul>
 
   </div>
 </div>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Syncronize Changes in Files under Version Control. — sync • stow</title>
+<title>Reminders to Record Your Work — remind_me • stow</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -76,26 +76,41 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Syncronize Changes in Files under Version Control.</h1>
+    <h1>Reminders to Record Your Work</h1>
     </div>
 
     
-    <p>TODO Describe this better.</p>
+    <p>It's easy to get carried away and forget to record your work. stow can send
+you a reminder if you have work that needs to be committed, but haven't used
+a stow function for some time.</p>
     
 
-    <pre class="usage"><span class='fu'>sync</span>()</pre>
-        
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <pre class="usage"><span class='fu'>remind_me</span>(<span class='kw'>after</span> <span class='kw'>=</span> <span class='fl'>60</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>after</th>
+      <td><p>how long (in minutes) to wait before reminding you to record
+your work</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>TODO</p>
+    <p>To turn off reminders, just do <code>remind_me(after = 0)</code>.
+  <code>remind_me()</code> is called by default when you run
+  <code><a href='create_repo.html'>create_repo</a>()</code>.</p>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
           </ul>
 
   </div>
