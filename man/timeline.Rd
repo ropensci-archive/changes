@@ -7,7 +7,7 @@
 timeline()
 }
 \value{
-history object
+timeline object
 }
 \description{
 This function shows the history of records made.

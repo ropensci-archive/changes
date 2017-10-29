@@ -6,9 +6,7 @@
 \usage{
 scrub()
 }
-\value{
-TODO
-}
 \description{
-TODO Describe this better.
+Undo all of the changes you made since the last time you did \code{record()}.
+\emph{WARNING: this will delete and change files and can't be undone!}
 }

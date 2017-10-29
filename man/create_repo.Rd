@@ -5,7 +5,7 @@
 \title{Create a Repository for Version Control}
 \usage{
 create_repo(path = getwd(), add_structure = TRUE, change_wd = TRUE,
-  reminder_delay = 30)
+  remind_me_after = 60)
 }
 \arguments{
 \item{path}{TODO}
@@ -14,8 +14,11 @@ create_repo(path = getwd(), add_structure = TRUE, change_wd = TRUE,
 
 \item{change_wd}{TODO}
 
-\item{reminder_delay}{set reminder delay in minutes, zero disables reminders}
+\item{remind_me_after}{set reminder delay in minutes, zero disables reminders}
 }
 \description{
 TODO: Describe this better.
+}
+\details{
+See \code{\link{remind_me}()} for more information on reminders
 }

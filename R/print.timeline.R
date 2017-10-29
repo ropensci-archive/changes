@@ -11,24 +11,46 @@
 #' @export
 
 print.timeline <- function (x, ...) {
-
-  x_rev <- x[seq(dim(x)[1],1),]
-
-  output <- for (i in 1:length(x_rev)) {
+  
+  n_commits <- nrow(x)
+  order <- rev(seq_len(n_commits))
+  
+  template <- "   (%i) %s\n    %s  %s\n    %s\n"
+  #    (<record_id>) <message>
+  #    <pipe> <datetime>
+  #    <pipe>
+  
+  for (i in order) {
     
-    x_rev$message <- gsub("\\n+", ": ", x_rev$message)
-    cat(paste0('\t() Record No: ', x_rev$record_id, '\n',
-               '\t | Author: ', x_rev$author, '\n',
-               '\t | Date & Time: ', x_rev$when, '\n',
-               '\t | Message: ', x_rev$message, '\n',
-               '\t | sha key: ', x_rev$sha, '\n',
-               '\t | \n',
-               '\t | \n',
-               '\t | \n'))
+    commit <- x[i, ]
+    
+    msg <- gsub("\\n+", ": ", commit$message)
+    sha <- substr(commit$sha, 1, 7)
+    datetime <- format(commit$when, format = "%Y-%m-%d %H:%M")
+    
+    # don't use the pipe for the last one, and pad by the width of the number
+    pipe <- ifelse(i == 1, " ", "|")
+    pad <- nchar(commit$record_id) - 1
+    pipe <- paste0(pipe, rep(" ", pad))
+    
+    string <- sprintf(template,
+                      commit$record_id,
+                      msg,
+                      pipe,
+                      datetime,
+                      pipe)
+    cat(string)
     
   }
   
-  print(output)
-  invisible(x)
+  repo <- attr(x, "repo")
+  n_total <- number_of_commits(repo, "total")
+  
+  if (n_commits < n_total) {
+    n_future <- number_of_commits(repo, "future")
+    cat(sprintf("   ...plus %i future records (%i in total)\n",
+                n_future,
+                n_total))
+  }
   
 }

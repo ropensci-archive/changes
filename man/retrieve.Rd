@@ -2,21 +2,13 @@
 % Please edit documentation in R/retrieve.R
 \name{retrieve}
 \alias{retrieve}
-\title{Retrieve code from a past commit.}
+\title{Retrieve code from a past record}
 \usage{
-retrieve(sha, files = NULL)
+retrieve(number)
 }
 \arguments{
-\item{sha}{The sha to retrieve}
-
-\item{files}{vector or list files to retrive TODO: add this}
-}
-\value{
-TODO
+\item{number}{the record number to retrieve}
 }
 \description{
-If the argument files is NULL will reteive state of entire repo
-}
-\details{
 TODO Describe this better.
 }

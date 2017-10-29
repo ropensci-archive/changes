@@ -4,11 +4,10 @@
 #'
 #' @param files an optional character vector of files for which you want to see
 #'   the changes
-#' @param silent if TRUE does not issue a message
 #'
 #' @return number of changes
 #' @export
-changes <- function (files = NULL, silent = FALSE) { 
+changes <- function (files = NULL) { 
   
   repo <- get_repo()
   
@@ -32,7 +31,7 @@ changes <- function (files = NULL, silent = FALSE) {
             call. = FALSE)
     }
     
-    repo_path <- dirname(repo@path)
+    repo_path <- repo@path
     files <- gsub(file.path(repo_path, ""),
                   "", files)
     
@@ -42,8 +41,8 @@ changes <- function (files = NULL, silent = FALSE) {
   
   headline <- paste_num(nrow(changed),
                         "file",
-                        "changed since the last record()/git commmit:\n\n",
-                        fallback = "no changes since the last record()/git commit")
+                        "changed since the last record\n\n",
+                        fallback = "no changes since the last record")
   
   if (nrow(changed) > 0) {
     
@@ -62,8 +61,9 @@ changes <- function (files = NULL, silent = FALSE) {
     
   }
   
-  if (!silent) message(headline, line_changes)
-  invisible (NULL)
+  cat (headline, line_changes)
+  
+  invisible(changed)
   
 }
 
@@ -102,12 +102,8 @@ format_changes <- function (changed, file_names = TRUE) {
 diff_df <- function (repo, staged = FALSE) {
   
   diff <- git2r::diff(repo, index = staged)
-  diff_list <- git2r:::lines_per_file(diff)
-  
-  df_list <- lapply(diff_list,
-                    as.data.frame,
-                    stringsAsFactors = FALSE)
-  df <- do.call(rbind, df_list)
+  file_changes <- lapply(diff@files, file_line_changes)
+  df <- do.call(rbind, file_changes)
   
   # if it was empty, return an empty dataframe with the right columns
   if (none(df)) {
@@ -123,4 +119,28 @@ quotes <- function (x) {
 
 quote_list <- function (x) {
   paste(quotes(x), collapse = ", ")
+}
+
+
+file_line_changes <- function (file) {
+  
+  # collapse all lines in the file
+  lines <- unlist(lapply(file@hunks, slot, "lines"))
+  
+  # find out whether each has changed
+  origins <- vapply(lines, slot, "origin", FUN.VALUE = 1)
+  
+  # count the number of additions/deletions per line
+  additions <- vapply(lines[origins == 43],
+                      slot, "num_lines",
+                      FUN.VALUE = 1)
+  
+  deletions <- vapply(lines[origins == 45],
+                      slot, "num_lines",
+                      FUN.VALUE = 1)
+  
+  data.frame(file = file@new_file,
+             add = sum(additions),
+             del = sum(deletions))
+  
 }

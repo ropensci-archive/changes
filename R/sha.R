@@ -6,8 +6,8 @@ get_shas <- function(repo, nchars = NULL) {
   
   shas <- call_system("git", c("rev-list", "--all"))
   
-  if(!is.null(nchars)) {
-    shas <- substr(shas,1,nchars)
+  if (!is.null(nchars)) {
+    shas <- substr(shas, 1, nchars)
   }
   
   shas

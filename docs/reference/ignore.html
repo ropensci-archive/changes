@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add files or folders to list of ignored items — ignore • stow</title>
+<title>Ignore (or unignore) files and folders from version control — ignore • stow</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -23,8 +23,7 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -52,16 +51,10 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../articles/stow.html">Get Started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../articles/index.html">Articles</a>
 </li>
       </ul>
       
@@ -83,27 +76,30 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add files or folders to list of ignored items</h1>
+    <h1>Ignore (or unignore) files and folders from version control</h1>
     </div>
 
     
-    <p>TODO Describe this better.</p>
+    <p>By default, stow will keep track of (almost) all of the files in
+  your project. You can use <code>ignore()</code> to make stow ignore certain files
+  (not track different versions of them), and <code>unignore()</code> to make it
+  track files that are currently ignored.</p>
+<p>You can use wildcard characters to match multiple files, e.g.
+  <code>ignore("*.csv")</code> to ignore all csv files.</p>
     
 
-    <pre class="usage"><span class='fu'>ignore</span>(<span class='no'>files</span>)</pre>
+    <pre class="usage"><span class='fu'>ignore</span>(<span class='no'>files</span>)
+
+<span class='fu'>unignore</span>(<span class='no'>files</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>files</th>
-      <td><p>vector or list files to retrive</p></td>
+      <td><p>a character vector of files to ignore</p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>TODO</p>
     
 
   </div>
@@ -111,9 +107,7 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>

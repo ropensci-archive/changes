@@ -5,16 +5,17 @@
 #' @param path TODO
 #' @param add_structure TODO
 #' @param change_wd TODO
-#' @param reminder_delay set reminder delay in minutes, zero disables reminders
+#' @param remind_me_after set reminder delay in minutes, zero disables reminders
+#'
+#' @details See \code{\link{remind_me}()} for more information on reminders
 #'
 #' @export
-create_repo <- function (path = getwd(), add_structure = TRUE, change_wd = TRUE, reminder_delay = 30) {
+create_repo <- function (path = getwd(), add_structure = TRUE, change_wd = TRUE, remind_me_after = 60) {
 
-  # Create a new repo
-  # Possibly want more specific error messages than exist here?
+  # Create a new git repo
   init(path)
-  message("* Initialising git repository in:\n  ", path)
-
+  message("started version control project at ", path)
+  
   # record current path
   old_dir <- getwd()
   if (path != old_dir && !change_wd) {
@@ -24,6 +25,10 @@ create_repo <- function (path = getwd(), add_structure = TRUE, change_wd = TRUE,
   # go into repo and setup directory structure
   setwd(path)
 
+  # make sure this is the repo being pointed at now
+  .cache$repo <- NULL
+  get_repo()
+  
   if (add_structure) {
     folders  <-  c("data", "output", "ignore", "R")
     for (k in seq_along(folders)) {
@@ -38,12 +43,14 @@ create_repo <- function (path = getwd(), add_structure = TRUE, change_wd = TRUE,
                   ".DS_Store", "*.Rapp.history", "*.Rhistory",
                   "*.RData", "*tmp*", "*.rda", "*.rds", "*~$*",
                   ".Rproj.user", "ehthumbs.db", "Icon?",
-                  "Thumbs.db",
-                  "ignore", "output"),
+                  "Thumbs.db", "ignore", "output", ".gitignore"),
                 ".gitignore")
+    
+    # commit the new structure
+    record("set up project structure")
+    
   }
 
-  # initial commit
-  # TODO: Call here to changes function to make first snapshot
-
+  remind_me(remind_me_after)
+  
 }
