@@ -61,14 +61,16 @@ show_reminder <- function () {
   if (n_changes) {
     if (n_changes < 2) {
       msg <- c(paste("Hey, there is", n_changes, "file that"),
-                     "has changed since your last commit to git!")
+                     "has changed since you last recorded your work!")
     } else {
       msg <- c(paste("Hey, there are", n_changes, "files that"),
-                     "have changed since your last commit to git!")
+                     "have changed since you last recorded your work!")
     }  
     notify(msg, title="A gentle reminder from stow")
   }
+  
   # No need to reschedule the reminder, at least on macOS, it is persistent
+  
   # return nothing
   invisible (NULL)
 }
