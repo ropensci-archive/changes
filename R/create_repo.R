@@ -5,10 +5,12 @@
 #' @param path TODO
 #' @param add_structure TODO
 #' @param change_wd TODO
-#' @param reminder_delay set reminder delay in minutes, zero disables reminders
+#' @param remind_me_after set reminder delay in minutes, zero disables reminders
+#'
+#' @details See \code{\link{remind_me}()} for more information on reminders
 #'
 #' @export
-create_repo <- function (path = getwd(), add_structure = TRUE, change_wd = TRUE, reminder_delay = 30) {
+create_repo <- function (path = getwd(), add_structure = TRUE, change_wd = TRUE, remind_me_after = 60) {
 
   # Create a new git repo
   init(path)
@@ -49,8 +51,6 @@ create_repo <- function (path = getwd(), add_structure = TRUE, change_wd = TRUE,
     
   }
 
-  # .cache$repo <- NULL
-  # get_repo()
-  # record("set up project")
+  remind_me(remind_me_after)
   
 }

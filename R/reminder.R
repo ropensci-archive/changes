@@ -1,14 +1,20 @@
-#' Set the reminder delay in minutes for commit reminder messages
+#' Reminders to Record Your Work
 #'
-#' TODO: Describe this better.
+#' It's easy to get carried away and forget to record your work. stow can send
+#' you a reminder if you have work that needs to be committed, but haven't used
+#' a stow function for some time.
 #'
-#' @param minutes delay in minutes
+#' @param after how long (in minutes) to wait before reminding you to record
+#'   your work
 #'
-#' @return nothing
+#' @details To turn off reminders, just do \code{remind_me(after = 0)}.
+#'   \code{remind_me()} is called by default when you run
+#'   \code{\link{create_repo}()}.
+#'
 #' @export
-reminder_delay <- function(minutes) {
+remind_me <- function(after = 60) {
   
-  minutes <- as.integer(minutes)
+  minutes <- as.integer(after)
   
   # convert minutes to seconds of reminder delay, store in .cache environment
   .cache[["reminder_delay"]] <- minutes
@@ -30,12 +36,12 @@ reminder_delay <- function(minutes) {
 #' Called in get_repo() so at the topof every user-exposed function
 #' 
 #' @noRd
-#'
-#' @return nothing
 schedule_reminder <- function() {
   
   # get the reminder delay from the .cache environment
   delay <- .cache$reminder_delay
+  
+  # coerce to seconds here, so we can use minutes elsewhere
   if (delay > 0) {
     later::later(show_reminder,
                  delay = delay * 60)
@@ -46,6 +52,7 @@ schedule_reminder <- function() {
 #' Show a reminder message
 #'
 #' @noRd
+#' 
 #' @importFrom notifier notify
 show_reminder <- function () {
   
