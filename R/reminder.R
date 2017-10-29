@@ -55,7 +55,7 @@ schedule_reminder <- function() {
 #' @noRd
 show_reminder <- function () {
   
-  changes <- capture.output(changes())
+  capture.output(changed <- changes())
   n_changes <- nrow(changed)
   
   paused <- .cache$reminder_paused
