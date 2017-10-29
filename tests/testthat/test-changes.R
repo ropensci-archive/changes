@@ -11,6 +11,6 @@ test_that("changes() message: clean history", {
   stow:::init(path)
   write(a <- "a", file = file.path(path, "a"))
   record("init")
-  expect_message(changes(), "no changes since the last")
+  expect_output(changes(), "no changes since the last")
   setwd(test_path)
 })

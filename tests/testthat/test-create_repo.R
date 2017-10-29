@@ -60,7 +60,7 @@ test_that("create_repo(): create repo in a new directory different from getwd() 
                  paste0("started version control project at ", path))
   .cache  <-  stow:::.cache
   .cache$repo  <- NULL
-  expect_message(changes(), "no changes since the last")
+  expect_output(changes(), "no changes since the last")
   # .git folder with no commits
   setwd(test_path)
   unlink(path, recursive = TRUE)
