@@ -10,14 +10,6 @@ sudo:
 warnings_are_errors: 
   - true
   
-r_packages:
- - git2r
- - later
- - igraph
- 
-r_github_packages:
- - gaborcsardi/notifier
-
 before_install:
   - chmod 755 ./travis-tool/travis_timeout.sh
 

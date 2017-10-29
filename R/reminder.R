@@ -53,8 +53,6 @@ schedule_reminder <- function() {
 #' Show a reminder message
 #'
 #' @noRd
-#' 
-#' @importFrom notifier notify
 show_reminder <- function () {
   
   n_changes <- changes(silent = TRUE)
