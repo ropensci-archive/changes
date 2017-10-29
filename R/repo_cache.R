@@ -1,7 +1,7 @@
 
 # set up a cache
 .cache <- new.env()
-.cache$reminder_delay <- 15
+.cache$reminder_delay <- 60 # default to hourly notifications
 
 #' get the git repository from the cache
 #'

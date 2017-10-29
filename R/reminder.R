@@ -19,7 +19,7 @@ reminder_delay <- function(minutes) {
     msg <- paste("Reminders set for", minutes, "minutes")
   }
   
-  message(msg) 
+  cat(msg) 
   
   schedule_reminder()
   
@@ -27,15 +27,15 @@ reminder_delay <- function(minutes) {
 
 #' Schedule a reminder
 #'
-#' TODO: This needs to be called at the tope of every stow function, as well as in the .onLoad of the package
+#' Called in get_repo() so at the topof every user-exposed function
+#' 
+#' @noRd
 #'
 #' @return nothing
-#' @noRd
 schedule_reminder <- function() {
   
   # get the reminder delay from the .cache environment
   delay <- .cache$reminder_delay
-  
   if (delay > 0) {
     later::later(show_reminder,
                  delay = delay * 60)
@@ -45,27 +45,23 @@ schedule_reminder <- function() {
 
 #' Show a reminder message
 #'
-#' @return nothing
 #' @noRd
-show_reminder <- function() {
+#' @importFrom notifier notify
+show_reminder <- function () {
   
   n_changes <- changes(silent = TRUE)
   
-  if (n_changes > 0) {
-    
-    if (n_changes < 4) {
-      msg <- "\nHey, it's been a while since you record()ed your changes..\n"
+  if (n_changes) {
+    if (n_changes < 2) {
+      msg <- c(paste("Hey, there is", n_changes, "file that"),
+                     "has changed since your last commit to git!")
     } else {
-      msg <- "\nHey, there are a shedload of changes which you should record()!\n"
-    }      
-    
-    message(msg)
-    changes()
+      msg <- c(paste("Hey, there are", n_changes, "files that"),
+                     "have changed since your last commit to git!")
+    }  
+    notify(msg, title="A gentle reminder from stow")
   }
-  
-  # reschedule the reminder
-  schedule_reminder()
-  
+  # No need to reschedule the reminder, at least on macOS, it is persistent
   # return nothing
   invisible (NULL)
 }
