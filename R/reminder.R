@@ -60,16 +60,10 @@ show_reminder <- function () {
   n_changes <- changes(silent = TRUE)
   paused <- .cache$reminder_paused
   
-  if (n_changes & !paused) {
-    if (n_changes < 2) {
-      msg <- c(paste("Hey, there is", n_changes, "file that"),
-                     "has changed since you last recorded your work!")
-    } else {
-      msg <- c(paste("Hey, there are", n_changes, "files that"),
-                     "have changed since you last recorded your work!")
-    }  
+  if (n_changes > 0 & !paused) {
     
-    notify(msg, title="A gentle reminder from stow")
+    msg <- paste_num(n_changes, "file", "changed since you last recorded your work!")
+    cat("\nHey,", msg)
     
     # pause the reminder, until they use another stow function
     .cache$reminder_paused <- TRUE
