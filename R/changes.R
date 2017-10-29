@@ -4,11 +4,10 @@
 #'
 #' @param files an optional character vector of files for which you want to see
 #'   the changes
-#' @param silent if TRUE does not issue a message
 #'
 #' @return number of changes
 #' @export
-changes <- function (files = NULL, silent = FALSE) { 
+changes <- function (files = NULL) { 
   
   repo <- get_repo()
   
@@ -62,12 +61,10 @@ changes <- function (files = NULL, silent = FALSE) {
     
   }
   
-  if (!silent) {
-    cat (headline, line_changes)
-    return (invisible(NULL))
-  } else {
-    return (nrow(changed))
-  }
+  cat (headline, line_changes)
+  
+  invisible(changed)
+  
 }
 
 # format the line changes for each modified file
