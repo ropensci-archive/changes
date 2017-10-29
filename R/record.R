@@ -5,8 +5,6 @@
 #' @param message character: the message to be added to the version control
 #'   checkpoint.
 #'
-#' @return the git2r commit object (S4). TODO: maybe return something nicer.
-#'
 #' @importFrom git2r add commit
 #'
 #' @export
@@ -46,7 +44,7 @@ record <- function (message) {
   if (any_staged | any_unstaged) {
     capture.output(git2r::commit(repo, message = message))
   } else {
-    message ("no files have changed since your last record, ",
+    cat ("no files have changed since your last record,",
              "there's nothing to commit")
   }
   
