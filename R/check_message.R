@@ -5,13 +5,17 @@
 #' @noRd
 check_message <- function (message) {
   
+  if (missing(message))
+    message <- ""
+  
   bad <- !is.character(message) || nchar(message) == 0
   
   if (bad) {
-    stop ("you can't record without a message\n",
-          "try putting something short but descriptive like: \"",
+    stop ("You can't record without a message saying what you changed. ",
+          "Try putting something short but descriptive like: \"",
           random_good_message(),
-          "\"")
+          "\"",
+          call. = FALSE)
   }
   
   message
