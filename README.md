@@ -18,7 +18,7 @@ Here's a quick demo of how to use stow:
 
 First, we need to create a new project (we only need to do this the first time we work with the project).
 
-``` r
+``` {.r}
 library(stow)
 create_repo("~/Desktop/myproject")
 ```
@@ -29,26 +29,26 @@ create_repo("~/Desktop/myproject")
 
 We can tell the repository if there are files (e.g. large data output files) we don't want to keep records of
 
-``` r
+``` {.r}
 ignore("output/results.csv")
 ```
 
 and we can always change our minds later.
 
-``` r
+``` {.r}
 unignore("output/results.csv")
 ```
 
 With the project set up, we can work on our project as normal.
 
-``` r
+``` {.r}
 # write some words to a file
 cat("this is fun!\n", file = "README.md", append = TRUE)
 ```
 
 We can then see which files have changed and make a record of the project, with a message to say what we did
 
-``` r
+``` {.r}
 changes()
 ```
 
@@ -56,7 +56,7 @@ changes()
        
          README.md:   1 line added
 
-``` r
+``` {.r}
 record("added stuff to readme")
 ```
 
@@ -64,7 +64,7 @@ Now we can keep working on and adding files in this folder, and recording our ch
 
 It's easy to forget to record, so stow will automatically remind us if we have unrecorded changes and it's been some time since we last used stow. By default we'll be reminded after 60 minutes, but we can change that:
 
-``` r
+``` {.r}
 remind_me(after = 30)
 ```
 
@@ -72,7 +72,7 @@ remind_me(after = 30)
 
 If we make a change we don't want to keep or record, we can undo it and go back to our last record
 
-``` r
+``` {.r}
 cat("I could do this all day.\n", file = "README.md", append = TRUE)
 changes()
 ```
@@ -81,7 +81,7 @@ changes()
        
          README.md:   1 line added
 
-``` r
+``` {.r}
 scrub()
 changes()
 ```
@@ -90,59 +90,59 @@ changes()
 
 We can look at all the records we've made so far
 
-``` r
+``` {.r}
 timeline()
 ```
 
           (1) initial commit
-           |  2017-10-30 02:43
+           |  2017-10-31 21:17
            |
           (2) set up project structure
-           |  2017-10-30 02:43
+           |  2017-10-31 21:17
            |
           (3) added stuff to readme
-              2017-10-30 02:43
+              2017-10-31 21:17
        
 
 and go back in time to recover the project at any one of those records - all of the files will be changed back to how they were at the time of that record
 
-``` r
+``` {.r}
 go_to(2)
 timeline()
 ```
 
           (1) initial commit
-           |  2017-10-30 02:43
+           |  2017-10-31 21:17
            |
           (2) set up project structure
-              2017-10-30 02:43
+              2017-10-31 21:17
             
           ...plus 1 future records (3 in total)
 
 but don't worry, we can always go back to the future to recover our subsequent work.
 
-``` r
+``` {.r}
 go_to(3)
 ```
 
 If we want to start again from a previous record, we can bring that record to the end of our timeline. stow will change all of the files to how they were at the time of the record, but all the work we recorded since then will still be stored, just in case we need it later.
 
-``` r
+``` {.r}
 retrieve(2)
 timeline()
 ```
 
           (1) initial commit
-           |  2017-10-30 02:43
+           |  2017-10-31 21:17
            |
           (2) set up project structure
-           |  2017-10-30 02:43
+           |  2017-10-31 21:17
            |
           (3) added stuff to readme
-           |  2017-10-30 02:43
+           |  2017-10-31 21:17
            |
           (4) retrieving previous state from record 2
-              2017-10-30 02:43
+              2017-10-31 21:17
        
 
 Installation
@@ -150,7 +150,7 @@ Installation
 
 stow isn't on CRAN yet, but it can be installed from github
 
-``` r
+``` {.r}
 # install.packages("remotes")
 remotes::install_github("ropenscilabs/ozrepro")
 ```
