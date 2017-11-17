@@ -1,5 +1,5 @@
 ---
-title: "Get Started with Stow!"
+title: "Get Started with changes!"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -82,7 +82,7 @@ sync("url")  # (not yet implemented)
 
 ```{r eval=FALSE}
 # load the package
-library(stow)
+library(changes)
 
 # make a new repository in your working directory
 # (you only need to do this the first time you work with the project)

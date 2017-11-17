@@ -1,8 +1,8 @@
 #' Reminders to Record Your Work
 #'
-#' It's easy to get carried away and forget to record your work. stow can send
+#' It's easy to get carried away and forget to record your work. changes can send
 #' you a reminder if you have work that needs to be committed, but haven't used
-#' a stow function for some time.
+#' a changes function for some time.
 #'
 #' @param after how long (in minutes) to wait before reminding you to record
 #'   your work
@@ -65,7 +65,7 @@ show_reminder <- function () {
     msg <- paste_num(n_changes, "file", "changed since you last recorded your work!")
     cat("\nHey,", msg)
     
-    # pause the reminder, until they use another stow function
+    # pause the reminder, until they use another changes function
     .cache$reminder_paused <- TRUE
     
   }

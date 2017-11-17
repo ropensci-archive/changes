@@ -1,4 +1,4 @@
-Package: stow
+Package: changes
 Title: A simple interface and workflow for version control in R (implemented using git as backend but without the confusion)
 Version: 0.0.0.1
 Authors@R: c(
@@ -28,5 +28,5 @@ Suggests:
    rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
-URL: https://github.com/ropenscilabs/ozrepro
-BugReports: https://github.com/ropenscilabs/ozrepro/issues
+URL: https://github.com/ropenscilabs/changes
+BugReports: https://github.com/ropenscilabs/changes/issues
