@@ -58,7 +58,7 @@ test_that("create_repo(): create repo in a new directory different from getwd() 
   path <- normalizePath(path)
   expect_message(create_repo(path, add_structure = FALSE, change_wd = TRUE),
                  paste0("started version control project at ", path))
-  .cache  <-  stow:::.cache
+  .cache  <-  changes:::.cache
   .cache$repo  <- NULL
   expect_output(changes(), "no changes since the last")
   # .git folder with no commits

@@ -2,8 +2,8 @@
 #'
 #' @title Ignore (or unignore) files and folders from version control
 #'
-#' @description By default, stow will keep track of (almost) all of the files in
-#'   your project. You can use \code{ignore()} to make stow ignore certain files
+#' @description By default, changes will keep track of (almost) all of the files in
+#'   your project. You can use \code{ignore()} to make changes ignore certain files
 #'   (not track different versions of them), and \code{unignore()} to make it
 #'   track files that are currently ignored.
 #'

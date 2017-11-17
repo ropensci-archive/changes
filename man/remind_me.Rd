@@ -11,9 +11,9 @@ remind_me(after = 60)
 your work}
 }
 \description{
-It's easy to get carried away and forget to record your work. stow can send
+It's easy to get carried away and forget to record your work. changes can send
 you a reminder if you have work that needs to be committed, but haven't used
-a stow function for some time.
+a changes function for some time.
 }
 \details{
 To turn off reminders, just do \code{remind_me(after = 0)}.

@@ -1,4 +1,4 @@
 library(testthat)
-library(stow)
+library(changes)
 
-test_check("stow")
+test_check("changes")

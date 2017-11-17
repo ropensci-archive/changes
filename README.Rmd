@@ -3,19 +3,19 @@ output:
   github_document
 ---
 
-# stow: simpler version control from R
+# changes: simpler version control from R
 
-[![build status](https://travis-ci.org/ropenscilabs/ozrepro.svg?branch=master)](https://travis-ci.org/ropenscilabs/ozrepro)
+[![build status](https://travis-ci.org/ropenscilabs/changes.svg?branch=master)](https://travis-ci.org/ropenscilabs/changes)
 
-## What does stow do?
+## What does changes do?
 
-Stow allows beginners with minimal programming experience to use version control. Version control is a framework that saves previous versions of your work as you develop your projects (Like 'Track changes' in MS Word). You can then easily look at previous versions, merge changes, and collaborate with others, but without the headache! 
+changes allows beginners with minimal programming experience to use version control. Version control is a framework that saves previous versions of your work as you develop your projects (Like 'Track changes' in MS Word). You can then easily look at previous versions, merge changes, and collaborate with others, but without the headache! 
 
-Stow uses git under the hood. Git is a popular version control system used by projects such as Android and ggplot2. Don't worry, you don't need to know any git to use stow!
+changes uses git under the hood. Git is a popular version control system used by projects such as Android and ggplot2. Don't worry, you don't need to know any git to use changes!
 
 ## How do I use it?
 
-Here's a quick demo of how to use stow:
+Here's a quick demo of how to use changes:
 
 ```{r demo_destroy_repo, echo = FALSE}
 unlink("~/Desktop/myproject", recursive = TRUE)
@@ -27,7 +27,7 @@ knitr::opts_chunk$set(comment = "  ")
 First, we need to create a new project (we only need to do this the first time we work with the project).
 
 ```{r demo_create_repo}
-library(stow)
+library(changes)
 create_repo("~/Desktop/myproject")
 ```
 
@@ -58,7 +58,7 @@ record("added stuff to readme")
 
 Now we can keep working on and adding files in this folder, and recording our changes regularly with `record()`.
 
-It's easy to forget to record, so stow will automatically remind us if we have unrecorded changes and it's been some time since we last used stow. By default we'll be reminded after 60 minutes, but we can change that:
+It's easy to forget to record, so changes will automatically remind us if we have unrecorded changes and it's been some time since we last used changes. By default we'll be reminded after 60 minutes, but we can change that:
 ```{r demo_remind_me}
 remind_me(after = 30)
 ```
@@ -91,7 +91,7 @@ but don't worry, we can always go back to the future to recover our subsequent w
 go_to(3)
 ```
 
-If we want to start again from a previous record, we can bring that record to the end of our timeline. stow will change all of the files to how they were at the time of the record, but all the work we recorded since then will still be stored, just in case we need it later.
+If we want to start again from a previous record, we can bring that record to the end of our timeline. changes will change all of the files to how they were at the time of the record, but all the work we recorded since then will still be stored, just in case we need it later.
 
 
 ```{r demo_retrieve}
@@ -102,9 +102,9 @@ timeline()
 
 # Installation
 
-stow isn't on CRAN yet, but it can be installed from github
+changes isn't on CRAN yet, but it can be installed from github
 
 ```{r install, eval = FALSE}
 # install.packages("remotes")
-remotes::install_github("ropenscilabs/ozrepro")
+remotes::install_github("ropenscilabs/changes")
 ```
