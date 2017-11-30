@@ -11,6 +11,9 @@ changes <- function (files = NULL) {
   
   repo <- get_repo()
   
+  # add everything (recursively)
+  git2r::add(repo, "*")
+  
   # numbers of line changes for each changed file
   # find out whether the changes have been staged to commit
   unstaged <- diff_df(repo, staged = FALSE)

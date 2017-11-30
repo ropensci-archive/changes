@@ -27,7 +27,7 @@ ignore <- function (files) {
   # if any of these files are being tracked, do git rm --cached on them
   tracked <- vapply(files, is_tracked, FUN.VALUE = FALSE)
   if (any(tracked)) {
-    call_system("git", c("rm --cached", files[tracked]))
+    call_system("git", c("rm -r --cached", files[tracked]))
   }
   
 }
