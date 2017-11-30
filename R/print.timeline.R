@@ -31,7 +31,8 @@ print.timeline <- function (x, ...) {
     # don't use the pipe for the last one, and pad by the width of the number
     pipe <- ifelse(i == 1, " ", "|")
     pad <- nchar(commit$record_id) - 1
-    pipe <- paste0(pipe, rep(" ", pad))
+    padding <- paste0(rep(" ", pad), collapse = "")
+    pipe <- paste0(pipe, padding)
     
     string <- sprintf(template,
                       commit$record_id,
